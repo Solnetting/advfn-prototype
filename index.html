@@ -147,7 +147,8 @@ p, h1, h2, h3 { margin: 0; }
 .ct-legend-item { display:flex; gap:6px; align-items:center; overflow:hidden; flex-shrink:0; }
 .ct-legend-line { height:3px; border-radius:1.5px; flex-shrink:0; width:16px; }
 .ct-legend-item p { font-weight:400; font-size:12px; color:#5a5956; white-space:nowrap; }
-.ct-tooltip { position:absolute; background:white; display:flex; flex-direction:column; gap:4px; align-items:flex-start; padding:10px 12px; border-radius:8px; box-shadow:0px 2px 8px 0px rgba(0,0,0,0.08); width:170px; left:140px; top:110px; }
+.ct-tooltip { position:absolute; background:white; display:none; flex-direction:column; gap:4px; align-items:flex-start; padding:10px 12px; border-radius:8px; box-shadow:0px 2px 8px 0px rgba(0,0,0,0.08); width:170px; left:140px; top:110px; z-index:10; }
+.ct-guide-line { position:absolute; top:0; bottom:0; width:1px; background:#c8c6be; opacity:0.7; pointer-events:none; left:325px; }
 .ct-tooltip .tt-date { font-weight:600; font-size:12px; color:#1c1c1b; width:100%; }
 .ct-tooltip .tt-price,.ct-tooltip .tt-target { font-weight:400; font-size:12px; color:#1c1c1b; width:100%; }
 .ct-tooltip .tt-target { color:#5a5956; }
@@ -260,6 +261,115 @@ p, h1, h2, h3 { margin: 0; }
 .ke-tag p { font-weight:600; font-size:11px; color:#363634; white-space:nowrap; }
 .ke-row-divider { border:none; border-top:1px solid #eae9e5; width:100%; margin:0; flex-shrink:0; }
 .ke-row-wrap:last-child .ke-row-divider { display:none; }
+
+/* ─── HOVER STATES ─── */
+.aa-row-wrap:hover { background:#f8f8f6; }
+.ar-row:hover .ar-row-content { background:#f8f8f6; }
+.ke-row-wrap:hover .ke-row-content { background:#f8f8f6; }
+.fe-row:hover { background:#f8f8f6; }
+.vm-row:hover { background:#f8f8f6; }
+.kr-risk-item:hover .kr-item-content { background:#f8f8f6; }
+
+/* ─── ANALYST RATINGS WITH AVATARS ─── */
+.ar-avatar { width:32px; height:32px; border-radius:50%; overflow:hidden; flex-shrink:0; position:relative; }
+.ar-avatar img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.ar-col-avatar { flex:0 0 48px; min-width:0; }
+.ar-cell-avatar { flex:0 0 48px; min-width:0; display:flex; align-items:center; }
+.ar-table-head-avatars { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; padding:10px 24px; gap:16px; }
+.ar-table-head-avatars .col { flex:1; min-width:0; }
+
+/* ─── FORWARD ESTIMATES CARD ─── */
+.fe-card { padding:24px; display:flex; flex-direction:column; align-items:flex-start; border-radius:12px !important; border-color:#d7dade !important; }
+.fe-card-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; width:100%; flex-shrink:0; }
+.fe-title-row { display:flex; gap:8px; align-items:center; flex-shrink:0; }
+.fe-accent { background:#1f2937; height:14px; border-radius:1.5px; width:3px; flex-shrink:0; }
+.fe-card-title { font-weight:700; font-size:12px; color:#1f2937; text-transform:uppercase; white-space:nowrap; }
+.fe-subtitle { font-weight:400; font-size:12px; color:#6b7280; white-space:nowrap; }
+.fe-table-head { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; display:flex; font-weight:600; font-size:11px; color:#6b7280; text-transform:uppercase; gap:16px; align-items:flex-start; padding:10px 24px 10px 23px; width:100%; flex-shrink:0; }
+.fe-col-metric { width:140px; flex-shrink:0; }
+.fe-col-val { flex:1; min-width:1px; text-align:right; }
+.fe-table-body { display:flex; flex-direction:column; width:100%; flex-shrink:0; }
+.fe-row { border-bottom:1px solid #e5e7eb; display:flex; align-items:center; width:100%; flex-shrink:0; transition:background 0.1s; }
+.fe-row:last-child { border-bottom:none; }
+.fe-accent-bar { width:3px; flex-shrink:0; align-self:stretch; }
+.fe-row-cells { display:flex; flex:1; gap:16px; align-items:center; padding:14px 24px 14px 20px; }
+.fe-cell-metric { font-weight:600; font-size:13px; color:#1f2937; width:140px; flex-shrink:0; }
+.fe-cell-val { flex:1; min-width:1px; font-weight:500; font-size:13px; color:#1f2937; text-align:right; }
+.fe-pagination { display:flex; height:42px; align-items:center; justify-content:space-between; padding-top:20px; width:100%; flex-shrink:0; }
+.fe-pagination .entries { font-weight:400; font-size:12px; color:#6b7280; white-space:nowrap; }
+.fe-pagination-controls { display:flex; gap:16px; align-items:center; overflow:hidden; flex-shrink:0; }
+.fe-pagination-controls .page-info { font-weight:600; font-size:12px; color:#1f2937; white-space:nowrap; }
+
+/* ─── VALUATION MULTIPLES CARD ─── */
+.vm-card { padding:24px; display:flex; flex-direction:column; align-items:flex-start; border-radius:12px !important; border-color:#d7dade !important; }
+.vm-card-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; width:100%; flex-shrink:0; }
+.vm-title-row { display:flex; gap:8px; align-items:center; flex-shrink:0; }
+.vm-accent { background:#1f2937; height:14px; border-radius:1.5px; width:3px; flex-shrink:0; }
+.vm-card-title { font-weight:700; font-size:12px; color:#1f2937; text-transform:uppercase; white-space:nowrap; }
+.vm-subtitle { font-weight:400; font-size:13px; color:#6b7280; white-space:nowrap; }
+.vm-table-head { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; display:flex; font-weight:600; font-size:11px; color:#6b7280; text-transform:uppercase; gap:16px; align-items:flex-start; padding:10px 24px; width:100%; flex-shrink:0; }
+.vm-col-name { width:220px; flex-shrink:0; }
+.vm-col-val { flex:1; min-width:1px; text-align:right; }
+.vm-table-body { display:flex; flex-direction:column; width:100%; flex-shrink:0; }
+.vm-row { border-bottom:1px solid #e5e7eb; display:flex; gap:16px; align-items:center; padding:14px 24px; width:100%; flex-shrink:0; transition:background 0.1s; }
+.vm-row:last-child { border-bottom:none; }
+.vm-cell-name { font-weight:600; font-size:13px; color:#1f2937; width:220px; flex-shrink:0; }
+.vm-cell-val { flex:1; min-width:1px; font-weight:500; font-size:13px; color:#1c1c1b; text-align:right; }
+.vm-cell-val.dim { color:#5a5956; }
+.vm-pagination { display:flex; height:42px; align-items:center; justify-content:space-between; padding-top:20px; width:100%; flex-shrink:0; }
+.vm-pagination .entries { font-weight:400; font-size:12px; color:#6b7280; white-space:nowrap; }
+.vm-pagination-controls { display:flex; gap:16px; align-items:center; overflow:hidden; flex-shrink:0; }
+.vm-pagination-controls .page-info { font-weight:400; font-size:12px; color:#1f2937; white-space:nowrap; }
+
+/* ─── EPS NORMALIZED CARD ─── */
+.eps-card { padding:28px; display:flex; flex-direction:column; gap:24px; align-items:flex-start; box-shadow:0px 4px 6px rgba(0,0,0,0.03); }
+.eps-card-header { display:flex; align-items:center; justify-content:space-between; width:100%; flex-shrink:0; }
+.eps-header-left { display:flex; gap:8px; align-items:center; flex-shrink:0; }
+.eps-accent { background:#1c1c1b; height:16px; border-radius:1.5px; width:3px; flex-shrink:0; }
+.eps-card-title { font-weight:700; font-size:14px; color:#1c1c1b; text-transform:uppercase; white-space:nowrap; }
+.eps-subtitle { font-weight:400; font-size:12px; color:#5a5956; white-space:nowrap; }
+.eps-chart-container { height:280px; position:relative; width:100%; flex-shrink:0; }
+.eps-col { position:absolute; top:0; bottom:0; opacity:0.65; }
+.eps-grid-line { position:absolute; left:0; right:5.89%; height:1px; background:transparent; }
+.eps-grid-line::after { content:''; display:block; width:100%; height:1px; background:#c8c6be; opacity:0.5; }
+.eps-y-label { position:absolute; right:20px; font-weight:500; font-size:11px; color:#5a5956; text-align:right; width:36px; }
+.eps-dot { position:absolute; width:12px; height:12px; }
+.eps-dot img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.eps-x-labels { display:flex; width:100%; position:relative; height:28px; flex-shrink:0; }
+.eps-x-label { position:absolute; text-align:center; transform:translateX(-50%); display:flex; flex-direction:column; gap:2px; align-items:center; }
+.eps-x-label .qtr { font-weight:600; font-size:11px; color:#1c1c1b; }
+.eps-x-label .dt { font-weight:400; font-size:10px; color:#5a5956; }
+.eps-divider { background:#eae9e5; height:1px; width:100%; flex-shrink:0; }
+.eps-legend { display:flex; gap:24px; align-items:center; flex-shrink:0; }
+.eps-legend-item { display:flex; gap:8px; align-items:center; flex-shrink:0; }
+.eps-legend-dot { width:10px; height:10px; flex-shrink:0; position:relative; }
+.eps-legend-dot img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.eps-legend-label { font-weight:500; font-size:11px; color:#5a5956; white-space:nowrap; }
+
+/* ─── KEY RISKS CARD ─── */
+.kr-card { padding:24px; display:flex; flex-direction:column; gap:20px; align-items:flex-start; box-shadow:0px 4px 12px rgba(0,0,0,0.03); }
+.kr-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; width:100%; white-space:nowrap; flex-shrink:0; }
+.kr-title-group { display:flex; flex-direction:column; gap:4px; align-items:flex-start; flex-shrink:0; }
+.kr-title { font-weight:700; font-size:11px; color:#363634; letter-spacing:1.5px; text-transform:uppercase; }
+.kr-title-sub { font-weight:500; font-size:12px; color:#868582; }
+.kr-view-all { font-weight:600; font-size:12px; color:#5a5956; cursor:pointer; }
+.kr-header-divider { border:none; border-top:1.5px solid #eae9e5; width:100%; margin:0; flex-shrink:0; }
+.kr-risk-list { display:flex; flex-direction:column; width:100%; flex-shrink:0; }
+.kr-risk-item { display:flex; flex-direction:column; width:100%; flex-shrink:0; }
+.kr-item-content { display:flex; gap:20px; align-items:center; padding:16px 0; width:100%; flex-shrink:0; border-radius:6px; transition:background 0.1s; }
+.kr-severity { display:flex; flex-direction:column; gap:2px; align-items:center; text-align:center; width:52px; flex-shrink:0; white-space:nowrap; }
+.kr-sev-label { font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; }
+.kr-sev-value { font-weight:700; font-size:24px; line-height:1; }
+.kr-details { display:flex; flex:1; flex-direction:column; gap:4px; align-items:flex-start; min-width:1px; }
+.kr-risk-title { font-weight:700; font-size:14px; color:#363634; width:100%; line-height:1.3; }
+.kr-risk-desc { font-weight:400; font-size:12px; color:#868582; line-height:1.4; width:100%; }
+.kr-metadata { display:flex; gap:6px; align-items:center; padding-top:2px; white-space:nowrap; }
+.kr-metadata .source { font-weight:500; font-size:11px; color:#868582; }
+.kr-metadata .sep,.kr-metadata .date { font-weight:400; font-size:11px; color:#868582; }
+.kr-tag { background:#f8f8f6; border:1px solid #eae9e5; display:flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:6px; flex-shrink:0; }
+.kr-tag p { font-weight:600; font-size:11px; color:#363634; white-space:nowrap; }
+.kr-divider { border:none; border-top:1px solid #eae9e5; width:100%; margin:0; flex-shrink:0; }
+.kr-risk-item:last-child .kr-divider { display:none; }
 </style>
 </head>
 <body>
@@ -602,6 +712,9 @@ p, h1, h2, h3 { margin: 0; }
           <img alt="" style="position:absolute;inset:0;display:block;max-width:none;width:100%;height:100%;" src="assets/0bf74ad3ba4902a66f732546faa103dd8071e669.svg" />
         </div>
 
+        <!-- Interactive guide line -->
+        <div class="ct-guide-line"></div>
+
         <!-- Tooltip -->
         <div class="ct-tooltip">
           <p class="tt-date">Jul 14, 2026</p>
@@ -733,7 +846,7 @@ p, h1, h2, h3 { margin: 0; }
       </div>
     </div>
 
-    <!-- ROW 4: ANALYST RATINGS (full width) -->
+    <!-- ROW 4: ANALYST RATINGS with avatars (full width) -->
     <div class="card analyst-ratings">
       <div class="ar-title-row">
         <p class="ar-title">Analyst Ratings</p>
@@ -746,7 +859,8 @@ p, h1, h2, h3 { margin: 0; }
       </div>
 
       <div class="ar-table">
-        <div class="ar-table-head">
+        <div class="ar-table-head ar-table-head-avatars">
+          <div class="col ar-col-avatar"></div>
           <div class="col"><p>Analyst</p></div>
           <div class="col"><p>Firm</p></div>
           <div class="col"><p>Rating</p></div>
@@ -757,6 +871,7 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="J. Chen" src="assets/1cb1129e031e20c33c2a44be1e12dc90c074cf1e.png" /></div></div>
             <div class="ar-cell"><p class="ar-cell-analyst">J. Chen</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">Morgan Stanley</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
@@ -768,6 +883,7 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="R. Gupta" src="assets/213be31964178963c0313b6da6bf2962322a0fbc.png" /></div></div>
             <div class="ar-cell"><p class="ar-cell-analyst">R. Gupta</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">UBS</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
@@ -779,6 +895,7 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="S. Patel" src="assets/95b55f73865ae58880a45b7bd753a3f645eaadcc.png" /></div></div>
             <div class="ar-cell"><p class="ar-cell-analyst">S. Patel</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">Goldman Sachs</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
@@ -790,6 +907,7 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="L. Durand" src="assets/797b2fe68d2a45e5094c9ec2c1c664d0996664b1.png" /></div></div>
             <div class="ar-cell"><p class="ar-cell-analyst">L. Durand</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">BNP Paribas</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-hold"><p>Hold (3)</p></div></div>
@@ -801,9 +919,10 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="M. Torres" src="assets/c9dd58f2e6b51cf43a5e029a2fd15e824515b86b.png" /></div></div>
             <div class="ar-cell"><p class="ar-cell-analyst">M. Torres</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">JPMorgan</p></div>
-            <div class="ar-cell"><div class="ar-rating-badge ar-badge-outperform"><p>Outperform (2)</p></div></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
             <div class="ar-cell"><p class="ar-cell-date">Jul 25, 2026</p></div>
             <div class="ar-cell"><p class="ar-cell-target">$345</p></div>
           </div>
@@ -812,7 +931,8 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
-            <div class="ar-cell"><p class="ar-cell-analyst">K. Müller</p></div>
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="H. Kim" src="assets/d6e62d539542578d5f02c0ccaaec99f0597161bd.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">H. Kim</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">Deutsche Bank</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
             <div class="ar-cell"><p class="ar-cell-date">Jul 20, 2026</p></div>
@@ -823,7 +943,8 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
-            <div class="ar-cell"><p class="ar-cell-analyst">A. Smith</p></div>
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="K. Weber" src="assets/5747788a6bea8cc502de6504cbca03ba2db17f0a.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">K. Weber</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">Barclays</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-sell"><p>Sell (5)</p></div></div>
             <div class="ar-cell"><p class="ar-cell-date">Jul 15, 2026</p></div>
@@ -834,43 +955,282 @@ p, h1, h2, h3 { margin: 0; }
 
         <div class="ar-row">
           <div class="ar-row-content">
-            <div class="ar-cell"><p class="ar-cell-analyst">P. Nakamura</p></div>
-            <div class="ar-cell"><p class="ar-cell-firm">Nomura</p></div>
-            <div class="ar-cell"><div class="ar-rating-badge ar-badge-outperform"><p>Outperform (2)</p></div></div>
-            <div class="ar-cell"><p class="ar-cell-date">Jul 10, 2026</p></div>
-            <div class="ar-cell"><p class="ar-cell-target">$330</p></div>
-          </div>
-          <div class="ar-divider"></div>
-        </div>
-
-        <div class="ar-row">
-          <div class="ar-row-content">
-            <div class="ar-cell"><p class="ar-cell-analyst">F. Laurent</p></div>
-            <div class="ar-cell"><p class="ar-cell-firm">Société Générale</p></div>
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="C. Moreau" src="assets/8203933a9b71a2968735c134cabfe308fc08a3b5.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">C. Moreau</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Societe Generale</p></div>
             <div class="ar-cell"><div class="ar-rating-badge ar-badge-hold"><p>Hold (3)</p></div></div>
-            <div class="ar-cell"><p class="ar-cell-date">Jul 8, 2026</p></div>
-            <div class="ar-cell"><p class="ar-cell-target">$260</p></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 10, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">—</p></div>
           </div>
           <div class="ar-divider"></div>
         </div>
 
         <div class="ar-row">
           <div class="ar-row-content">
-            <div class="ar-cell"><p class="ar-cell-analyst">D. Kim</p></div>
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="A. Nakamura" src="assets/6a6d5c922f7cbc6c076333c5c2820d6eefa2e6fe.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">A. Nakamura</p></div>
             <div class="ar-cell"><p class="ar-cell-firm">Citi</p></div>
-            <div class="ar-cell"><div class="ar-rating-badge ar-badge-underperform"><p>Underperform (4)</p></div></div>
-            <div class="ar-cell"><p class="ar-cell-date">Jul 3, 2026</p></div>
-            <div class="ar-cell"><p class="ar-cell-target">$210</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-sell"><p>Sell (5)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 5, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$160</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="P. O'Brien" src="assets/2e2ec64922a0ab54d798d4038ad715c06b6cae7a.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">P. O'Brien</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">RBC Capital</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-hold"><p>Hold (3)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jun 30, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$195</p></div>
           </div>
         </div>
       </div>
 
       <div class="ar-pagination">
-        <p class="entries">Showing 10 of 56 analysts</p>
+        <p class="entries">Showing 10 entries</p>
         <div class="ar-pagination-ctrl">
           <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
-          <p class="page-info">Page 1 of 6</p>
+          <p class="page-info">Page 1 of 10</p>
           <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 5: FORWARD ESTIMATES (full width) -->
+    <div class="card fe-card">
+      <div class="fe-card-header">
+        <div class="fe-title-row">
+          <div class="fe-accent"></div>
+          <p class="fe-card-title">Forward Estimates</p>
+        </div>
+        <p class="fe-subtitle">Analyst forecasts</p>
+      </div>
+      <div class="fe-table-head">
+        <div class="fe-col-metric">Metric</div>
+        <div class="fe-col-val">Current Quarter</div>
+        <div class="fe-col-val">Next Quarter</div>
+        <div class="fe-col-val">Current Year</div>
+        <div class="fe-col-val">Next Year</div>
+        <div class="fe-col-val">Next 12 Months</div>
+      </div>
+      <div class="fe-table-body">
+        <div class="fe-row">
+          <div class="fe-accent-bar" style="background:#3b82f6;"></div>
+          <div class="fe-row-cells">
+            <p class="fe-cell-metric">EPS</p>
+            <p class="fe-cell-val">$1.24</p>
+            <p class="fe-cell-val">$1.31</p>
+            <p class="fe-cell-val">$5.42</p>
+            <p class="fe-cell-val">$6.18</p>
+            <p class="fe-cell-val">$5.86</p>
+          </div>
+        </div>
+        <div class="fe-row">
+          <div class="fe-accent-bar" style="background:#10b981;"></div>
+          <div class="fe-row-cells">
+            <p class="fe-cell-metric">Revenue</p>
+            <p class="fe-cell-val">$8.2B</p>
+            <p class="fe-cell-val">$8.7B</p>
+            <p class="fe-cell-val">$34.5B</p>
+            <p class="fe-cell-val">$38.2B</p>
+            <p class="fe-cell-val">$36.1B</p>
+          </div>
+        </div>
+        <div class="fe-row">
+          <div class="fe-accent-bar" style="background:#f59e0b;"></div>
+          <div class="fe-row-cells">
+            <p class="fe-cell-metric">EBITDA</p>
+            <p class="fe-cell-val">$2.1B</p>
+            <p class="fe-cell-val">$2.3B</p>
+            <p class="fe-cell-val">$8.9B</p>
+            <p class="fe-cell-val">$10.4B</p>
+            <p class="fe-cell-val">$9.6B</p>
+          </div>
+        </div>
+      </div>
+      <div class="fe-pagination">
+        <p class="entries">Showing 3 entries</p>
+        <div class="fe-pagination-controls">
+          <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
+          <p class="page-info">Page 1 of 1</p>
+          <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 6: VALUATION MULTIPLES (full width) -->
+    <div class="card vm-card">
+      <div class="vm-card-header">
+        <div class="vm-title-row">
+          <div class="vm-accent"></div>
+          <p class="vm-card-title">Valuation Multiples</p>
+        </div>
+        <p class="vm-subtitle">Forward-looking valuation ratios</p>
+      </div>
+      <div class="vm-table-head">
+        <div class="vm-col-name">Multiple</div>
+        <div class="vm-col-val">NTM</div>
+        <div class="vm-col-val">FY1</div>
+        <div class="vm-col-val">FY2</div>
+        <div class="vm-col-val">FY3</div>
+      </div>
+      <div class="vm-table-body">
+        <div class="vm-row">
+          <p class="vm-cell-name">P/E</p>
+          <p class="vm-cell-val">18.4x</p>
+          <p class="vm-cell-val">16.2x</p>
+          <p class="vm-cell-val">14.1x</p>
+          <p class="vm-cell-val dim">12.7x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">P/BV</p>
+          <p class="vm-cell-val">3.2x</p>
+          <p class="vm-cell-val">2.9x</p>
+          <p class="vm-cell-val">2.6x</p>
+          <p class="vm-cell-val dim">2.3x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">P/CFPS</p>
+          <p class="vm-cell-val">15.1x</p>
+          <p class="vm-cell-val">13.4x</p>
+          <p class="vm-cell-val">11.8x</p>
+          <p class="vm-cell-val dim">10.5x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">PEG</p>
+          <p class="vm-cell-val">1.4x</p>
+          <p class="vm-cell-val">1.2x</p>
+          <p class="vm-cell-val">1.1x</p>
+          <p class="vm-cell-val dim">1.0x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">TEV/EBIT</p>
+          <p class="vm-cell-val">20.1x</p>
+          <p class="vm-cell-val">17.8x</p>
+          <p class="vm-cell-val">15.4x</p>
+          <p class="vm-cell-val dim">13.6x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">TEV/EBITDA</p>
+          <p class="vm-cell-val">14.2x</p>
+          <p class="vm-cell-val">12.5x</p>
+          <p class="vm-cell-val">11.0x</p>
+          <p class="vm-cell-val dim">9.8x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">TEV/Revenue</p>
+          <p class="vm-cell-val">5.8x</p>
+          <p class="vm-cell-val">5.1x</p>
+          <p class="vm-cell-val">4.5x</p>
+          <p class="vm-cell-val dim">4.0x</p>
+        </div>
+        <div class="vm-row">
+          <p class="vm-cell-name">Market Cap/Revenue</p>
+          <p class="vm-cell-val">5.5x</p>
+          <p class="vm-cell-val">4.9x</p>
+          <p class="vm-cell-val">4.3x</p>
+          <p class="vm-cell-val dim">3.8x</p>
+        </div>
+      </div>
+      <div class="vm-pagination">
+        <p class="entries">Showing 8 entries</p>
+        <div class="vm-pagination-controls">
+          <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
+          <p class="page-info">Page 1 of 1</p>
+          <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 7: EPS NORMALIZED CHART (full width) -->
+    <div class="card eps-card">
+      <div class="eps-card-header">
+        <div class="eps-header-left">
+          <div class="eps-accent"></div>
+          <p class="eps-card-title">EPS Normalized ($)</p>
+        </div>
+        <p class="eps-subtitle">Historical trends and analyst estimates</p>
+      </div>
+
+      <div class="eps-chart-container" id="eps-chart">
+        <!-- Alternating column backgrounds -->
+        <div class="eps-col" style="left:0;right:83.39%;background:#eeeff1;"></div>
+        <div class="eps-col" style="left:16.61%;right:66.79%;background:#f8f8fa;"></div>
+        <div class="eps-col" style="left:33.21%;right:50.18%;background:#eeeff1;"></div>
+        <div class="eps-col" style="left:49.82%;right:33.57%;background:#f8f8fa;"></div>
+        <div class="eps-col" style="left:66.43%;right:16.96%;background:#eeeff1;"></div>
+        <div class="eps-col" style="left:83.04%;right:0.36%;background:#f8f8fa;"></div>
+
+        <!-- Y-axis grid lines and labels -->
+        <div class="eps-grid-line" style="top:21px;"></div>
+        <div class="eps-y-label" style="top:15px;">$1.30</div>
+        <div class="eps-grid-line" style="top:61px;"></div>
+        <div class="eps-y-label" style="top:55px;">$1.20</div>
+        <div class="eps-grid-line" style="top:101px;"></div>
+        <div class="eps-y-label" style="top:95px;">$1.10</div>
+        <div class="eps-grid-line" style="top:141px;"></div>
+        <div class="eps-y-label" style="top:135px;">$1.00</div>
+        <div class="eps-grid-line" style="top:181px;"></div>
+        <div class="eps-y-label" style="top:175px;">$0.90</div>
+        <div class="eps-grid-line" style="top:221px;"></div>
+        <div class="eps-y-label" style="top:215px;">$0.80</div>
+
+        <!-- Data dots -->
+        <div class="eps-dot" style="left:87px;top:195px;"><img alt="" src="assets/28982de95fa32ce4e2111d7311f54ac34a16579f.svg" /></div>
+        <div class="eps-dot" style="left:273px;top:115px;"><img alt="" src="assets/28982de95fa32ce4e2111d7311f54ac34a16579f.svg" /></div>
+        <div class="eps-dot" style="left:273px;top:95px;"><img alt="" src="assets/28982de95fa32ce4e2111d7311f54ac34a16579f.svg" /></div>
+        <div class="eps-dot" style="left:459px;top:75px;"><img alt="" src="assets/28982de95fa32ce4e2111d7311f54ac34a16579f.svg" /></div>
+        <div class="eps-dot" style="left:459px;top:95px;"><img alt="" src="assets/0af6b244a2ec6ad43f6708e6437ba666710b5c2f.svg" /></div>
+        <div class="eps-dot" style="left:645px;top:115px;"><img alt="" src="assets/0af6b244a2ec6ad43f6708e6437ba666710b5c2f.svg" /></div>
+        <div class="eps-dot" style="left:645px;top:95px;"><img alt="" src="assets/0af6b244a2ec6ad43f6708e6437ba666710b5c2f.svg" /></div>
+        <div class="eps-dot" style="left:831px;top:115px;"><img alt="" src="assets/bc1022969cc6839e3526890f78d43a67ef88cef2.svg" /></div>
+        <div class="eps-dot" style="left:1017px;top:55px;"><img alt="" src="assets/0af6b244a2ec6ad43f6708e6437ba666710b5c2f.svg" /></div>
+        <div class="eps-dot" style="left:1017px;top:35px;"><img alt="" src="assets/0af6b244a2ec6ad43f6708e6437ba666710b5c2f.svg" /></div>
+
+        <!-- X-axis labels (positioned below chart) -->
+        <div class="eps-x-label" style="left:93px;top:242px;">
+          <span class="qtr">FQ1'25</span>
+          <span class="dt">Mar 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:279px;top:242px;">
+          <span class="qtr">FQ2'25</span>
+          <span class="dt">Jun 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:465px;top:242px;">
+          <span class="qtr">FQ3'25</span>
+          <span class="dt">Sep 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:651px;top:242px;">
+          <span class="qtr">FQ4'25</span>
+          <span class="dt">Dec 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:837px;top:242px;">
+          <span class="qtr">FQ1'26</span>
+          <span class="dt">Mar 2026</span>
+        </div>
+        <div class="eps-x-label" style="left:1023px;top:242px;">
+          <span class="qtr">FQ2'26</span>
+          <span class="dt">Jun 2026</span>
+        </div>
+      </div>
+
+      <div class="eps-divider"></div>
+
+      <div class="eps-legend">
+        <div class="eps-legend-item">
+          <div class="eps-legend-dot"><img alt="" src="assets/b9bf9a9956495d924855f11697b2ef276e0e648a.svg" /></div>
+          <span class="eps-legend-label">Actual (Beat)</span>
+        </div>
+        <div class="eps-legend-item">
+          <div class="eps-legend-dot"><img alt="" src="assets/e3f5d9602185135bd9865f96c7c7f3494c2c32c4.svg" /></div>
+          <span class="eps-legend-label">Actual (Miss)</span>
+        </div>
+        <div class="eps-legend-item">
+          <div class="eps-legend-dot"><img alt="" src="assets/ebfe5ea64b154f6ac0de2a00b55fd58f0e3c99ae.svg" /></div>
+          <span class="eps-legend-label">Estimates</span>
         </div>
       </div>
     </div>
@@ -1022,9 +1382,264 @@ p, h1, h2, h3 { margin: 0; }
       </div>
     </div>
 
+    <!-- KEY RISKS CARD -->
+    <div class="card kr-card">
+      <div class="kr-header">
+        <div class="kr-title-group">
+          <p class="kr-title">Key Risks</p>
+          <p class="kr-title-sub">Company-specific risk factors</p>
+        </div>
+        <p class="kr-view-all">View all →</p>
+      </div>
+      <hr class="kr-header-divider" />
+
+      <div class="kr-risk-list">
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#ef4444;">
+              <p class="kr-sev-label">HIGH</p>
+              <p class="kr-sev-value">8</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Regulatory scrutiny</p>
+              <p class="kr-risk-desc">Potential regulatory action could increase compliance costs and restrict pricing flexibility in key markets.</p>
+              <div class="kr-metadata">
+                <span class="source">Reuters</span>
+                <span class="sep">·</span>
+                <span class="date">Aug 8, 2026</span>
+              </div>
+            </div>
+            <div class="kr-tag"><p>Regulatory</p></div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#f59e0b;">
+              <p class="kr-sev-label">MEDIUM</p>
+              <p class="kr-sev-value">4</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Margin pressure from rising costs</p>
+              <p class="kr-risk-desc">Increasing competition and input cost inflation could put pressure on operating margins over the next 2-3 quarters.</p>
+              <div class="kr-metadata">
+                <span class="source">Analyst research</span>
+                <span class="sep">·</span>
+                <span class="date">Aug 4, 2026</span>
+              </div>
+            </div>
+            <div class="kr-tag"><p>Financial</p></div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#3b82f6;">
+              <p class="kr-sev-label">LOW</p>
+              <p class="kr-sev-value">2</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Cloud segment growth deceleration</p>
+              <p class="kr-risk-desc">Enterprise spending pullback is slowing the company's highest-growth segment, which accounts for 35% of forward revenue estimates.</p>
+              <div class="kr-metadata">
+                <span class="source">10-Q filing</span>
+                <span class="sep">·</span>
+                <span class="date">Jul 30, 2026</span>
+              </div>
+            </div>
+            <div class="kr-tag"><p>Growth</p></div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#ef4444;">
+              <p class="kr-sev-label">HIGH</p>
+              <p class="kr-sev-value">9</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Key management transition</p>
+              <p class="kr-risk-desc">CFO departure during an active restructuring program creates execution uncertainty around capital allocation strategy.</p>
+              <div class="kr-metadata">
+                <span class="source">Company press release</span>
+                <span class="sep">·</span>
+                <span class="date">Jul 25, 2026</span>
+              </div>
+            </div>
+            <div class="kr-tag"><p>Management</p></div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#f59e0b;">
+              <p class="kr-sev-label">MEDIUM</p>
+              <p class="kr-sev-value">5</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Privacy regulation impact on ad revenue</p>
+              <p class="kr-risk-desc">New cross-platform tracking restrictions could reduce ad targeting effectiveness, with analysts estimating a 3-5% revenue headwind.</p>
+              <div class="kr-metadata">
+                <span class="source">Morgan Stanley research</span>
+                <span class="sep">·</span>
+                <span class="date">Jul 20, 2026</span>
+              </div>
+            </div>
+            <div class="kr-tag"><p>Regulatory</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /rail-col -->
 
 </div><!-- /page-body -->
 
+<script>
+// ── PRICE TARGETS Interactive Chart ──────────────────────────────────
+(function() {
+  const chartArea = document.querySelector('.pt-chart-area');
+  if (!chartArea) return;
+
+  // Data points mapped to y-positions in the 220px chart
+  // Current price: y=120 (US$225.08), High: y=20 (US$743.10), Avg: y=100 (US$314.29), Low: y=145 (US$180)
+  // Price scale: 0..220px → US$743.10..US$180 (roughly)
+  const HIGH = 743.10, AVG = 314.29, LOW = 180, CUR = 225.08;
+
+  // Reference x positions: separator line at ~200px (chart is 634px wide including labels)
+  // The chart SVG is 537px wide; the separator is at x=200 in the SVG
+  const SEPARATOR_X = 200; // px in chart coordinates
+  const CHART_TOTAL_W = 537; // px
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  // Find the current price label and group labels
+  const priceLabel = chartArea.querySelector('.pt-current-price');
+  const groups = chartArea.querySelectorAll('.pt-target-group');
+  const highGroup = groups[0], avgGroup = groups[1], lowGroup = groups[2];
+
+  chartArea.style.cursor = 'crosshair';
+
+  chartArea.addEventListener('mousemove', function(e) {
+    const rect = chartArea.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const xClamped = Math.max(0, Math.min(x, CHART_TOTAL_W));
+
+    // Only show interactive values in the right (projection) zone
+    if (xClamped > SEPARATOR_X) {
+      const t = (xClamped - SEPARATOR_X) / (CHART_TOTAL_W - SEPARATOR_X);
+      // Interpolate prices from current to targets
+      const interpHigh = lerp(CUR, HIGH, t);
+      const interpAvg  = lerp(CUR, AVG, t);
+      const interpLow  = lerp(CUR, LOW, t);
+
+      const pctHigh = ((interpHigh - CUR) / CUR * 100).toFixed(2);
+      const pctAvg  = ((interpAvg  - CUR) / CUR * 100).toFixed(2);
+      const pctLow  = ((interpLow  - CUR) / CUR * 100).toFixed(2);
+
+      if (highGroup) {
+        highGroup.querySelector('.label').textContent = `High · US$${interpHigh.toFixed(2)}`;
+        highGroup.querySelector('.pct').textContent = `+${pctHigh}%`;
+      }
+      if (avgGroup) {
+        avgGroup.querySelector('.label').textContent = `Avg · US$${interpAvg.toFixed(2)}`;
+        avgGroup.querySelector('.pct').textContent = (interpAvg >= CUR ? '+' : '') + pctAvg + '%';
+      }
+      if (lowGroup) {
+        lowGroup.querySelector('.label').textContent = `Low · US$${interpLow.toFixed(2)}`;
+        lowGroup.querySelector('.pct').textContent = (pctLow >= 0 ? '+' : '') + pctLow + '%';
+      }
+    } else {
+      // Reset to base values
+      if (highGroup) { highGroup.querySelector('.label').textContent = 'High · US$743.10'; highGroup.querySelector('.pct').textContent = '+230.15%'; }
+      if (avgGroup) { avgGroup.querySelector('.label').textContent = 'Avg · US$314.29'; avgGroup.querySelector('.pct').textContent = '+39.63%'; }
+      if (lowGroup) { lowGroup.querySelector('.label').textContent = 'Low · US$180'; lowGroup.querySelector('.pct').textContent = '-20.03%'; }
+    }
+  });
+
+  chartArea.addEventListener('mouseleave', function() {
+    if (highGroup) { highGroup.querySelector('.label').textContent = 'High · US$743.10'; highGroup.querySelector('.pct').textContent = '+230.15%'; }
+    if (avgGroup) { avgGroup.querySelector('.label').textContent = 'Avg · US$314.29'; avgGroup.querySelector('.pct').textContent = '+39.63%'; }
+    if (lowGroup) { lowGroup.querySelector('.label').textContent = 'Low · US$180'; lowGroup.querySelector('.pct').textContent = '-20.03%'; }
+  });
+})();
+
+// ── CONSENSUS TREND Interactive Chart ────────────────────────────────
+(function() {
+  const chartArea = document.querySelector('.ct-chart-area');
+  const tooltip = document.querySelector('.ct-tooltip');
+  const guideLine = document.querySelector('.ct-guide-line');
+  if (!chartArea || !tooltip || !guideLine) return;
+
+  // Chart data: 14 weeks from May 5 to Jul 28 (422px wide)
+  // Stock price range: ~$215 (left) to ~$222 (right at guide)
+  // Mean target range: ~$308 (left) to ~$315 (right)
+  const startDate = new Date('2026-05-05');
+  const endDate   = new Date('2026-07-28');
+  const CHART_W   = 422; // px
+
+  const STOCK_START = 215, STOCK_END = 222;
+  const TARGET_START = 308, TARGET_END = 315;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function dateAtX(x) {
+    const t = Math.max(0, Math.min(x, CHART_W)) / CHART_W;
+    const ms = startDate.getTime() + t * (endDate.getTime() - startDate.getTime());
+    const d = new Date(ms);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  const ttDate   = tooltip.querySelector('.tt-date');
+  const ttPrice  = tooltip.querySelector('.tt-price');
+  const ttTarget = tooltip.querySelector('.tt-target');
+  const ttDiff   = tooltip.querySelector('.tt-diff');
+
+  chartArea.style.cursor = 'crosshair';
+  tooltip.style.pointerEvents = 'none';
+
+  chartArea.addEventListener('mousemove', function(e) {
+    const rect = chartArea.getBoundingClientRect();
+    const x = Math.max(0, Math.min(e.clientX - rect.left, CHART_W));
+    const t = x / CHART_W;
+
+    const stockPrice  = lerp(STOCK_START,  STOCK_END,  t);
+    const meanTarget  = lerp(TARGET_START, TARGET_END, t);
+    const diff = meanTarget - stockPrice;
+    const diffPct = (diff / stockPrice * 100).toFixed(1);
+
+    // Move guide line
+    guideLine.style.left = x + 'px';
+
+    // Update tooltip
+    if (ttDate)   ttDate.textContent   = dateAtX(x);
+    if (ttPrice)  ttPrice.textContent  = `Stock Price: $${Math.round(stockPrice)}`;
+    if (ttTarget) ttTarget.textContent = `Mean Target: $${Math.round(meanTarget)}`;
+    if (ttDiff)   ttDiff.textContent   = `Difference: +$${Math.round(diff)} (+${diffPct}%)`;
+
+    // Position tooltip: prefer right of cursor, flip left if near right edge
+    const tooltipW = 170;
+    const chartW = rect.width;
+    let ttLeft = x + 12;
+    if (ttLeft + tooltipW > chartW) ttLeft = x - tooltipW - 12;
+    tooltip.style.left = ttLeft + 'px';
+    tooltip.style.top  = '80px';
+    tooltip.style.display = 'flex';
+  });
+
+  chartArea.addEventListener('mouseleave', function() {
+    tooltip.style.display = 'none';
+    guideLine.style.left = '325px'; // restore default
+    if (ttDate)   ttDate.textContent   = 'Jul 14, 2026';
+    if (ttPrice)  ttPrice.textContent  = 'Stock Price: $222';
+    if (ttTarget) ttTarget.textContent = 'Mean Target: $315';
+    if (ttDiff)   ttDiff.textContent   = 'Difference: +$93 (+41.9%)';
+  });
+})();
+</script>
 </body>
 </html>
