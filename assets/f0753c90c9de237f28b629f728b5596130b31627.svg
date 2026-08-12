@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="3.5" height="22" viewBox="0 0 3.5 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Prev-Button">
+<g clip-path="url(#clip0_478_32854)">
+<path id="chevron-left" d="M3.5 7.5L0 11L3.5 14.5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_478_32854">
+<rect width="3.5" height="22" rx="1.75" fill="white"/>
+</clipPath>
+</defs>
+</svg>
