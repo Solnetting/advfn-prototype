@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FIG – Analysts &amp; Estimates (Editorial) – ADVFN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 1728px; font-family: 'Inter', sans-serif; }
+body { margin: 0; background: #f8f7f4; }
+p, h1, h2, h3 { margin: 0; }
+
+/* ── ADVFN Nav ── */
+.advfn-nav { background:#1a1a2e; display:flex; align-items:center; padding:0 24px; height:48px; gap:24px; }
+.advfn-logo { color:#ff6b35; font-weight:900; font-size:20px; letter-spacing:-0.5px; }
+.nav-links { display:flex; gap:4px; align-items:center; }
+.nav-link { color:#aaa; font-size:13px; padding:6px 10px; border-radius:4px; cursor:pointer; }
+.nav-link.active { color:#fff; }
+.nav-right { margin-left:auto; display:flex; gap:12px; align-items:center; }
+.nav-btn { border:1px solid #444; color:#ccc; font-size:12px; padding:5px 12px; border-radius:4px; cursor:pointer; background:transparent; }
+
+/* ── Ticker Bar ── */
+.ticker-bar { background:#f8f9fa; border-bottom:1px solid #e5e7eb; padding:0 64px; display:flex; align-items:center; gap:32px; height:36px; overflow:hidden; }
+.ticker-item { display:flex; gap:8px; align-items:center; white-space:nowrap; }
+.ticker-symbol { font-size:12px; font-weight:700; color:#111; }
+.ticker-price { font-size:12px; color:#111; }
+.ticker-change.pos { font-size:12px; color:#1e7e34; }
+.ticker-change.neg { font-size:12px; color:#c0392b; }
+.ticker-sep { color:#d1d5db; }
+
+/* ── Alert Banner ── */
+.alert-banner { background:#fffbeb; border-bottom:1px solid #fde68a; padding:8px 64px; display:flex; align-items:center; gap:8px; }
+.alert-banner p { font-size:13px; color:#92400e; }
+.alert-banner strong { font-weight:600; }
+
+/* ── Page wrapper ── */
+.page-header { padding:16px 64px 0; background:#fff; }
+
+/* ── Stock Header ── */
+.stock-header { border-bottom:1px solid #d1d5db; display:flex; flex-direction:column; gap:16px; padding-bottom:20px; padding-top:16px; width:100%; }
+.company-context { display:flex; align-items:center; justify-content:space-between; width:100%; }
+.left-info { display:flex; gap:12px; height:46px; align-items:center; flex-shrink:0; }
+.company-details { display:flex; flex-direction:column; gap:4px; align-items:flex-start; flex-shrink:0; }
+.name-row { display:flex; gap:12px; align-items:baseline; white-space:nowrap; }
+.ticker-name { font-weight:700; font-size:24px; color:#111; }
+.co-name { font-weight:500; font-size:16px; color:#555; }
+.co-exchange { font-weight:400; font-size:14px; color:#888; }
+.exchange-badge { font-weight:400; font-size:11px; color:#888; letter-spacing:0.5px; text-transform:uppercase; white-space:nowrap; }
+.realtime-badge { background:#f8f9fa; border:1px solid #d1d5db; display:flex; align-items:center; overflow:hidden; padding:2px 8px; border-radius:4px; flex-shrink:0; }
+.realtime-badge p { font-weight:600; font-size:11px; color:#555; white-space:nowrap; }
+.right-actions { display:flex; gap:12px; align-items:flex-start; white-space:nowrap; }
+.btn-watchlist { border:1px solid #d1d5db; display:flex; gap:6px; align-items:center; padding:8px 16px; border-radius:2px; flex-shrink:0; cursor:pointer; background:#fff; }
+.btn-watchlist .wl-star { font-weight:400; font-size:13px; color:#555; }
+.btn-watchlist .wl-txt { font-weight:600; font-size:13px; color:#111; }
+.btn-alert { background:#111; display:flex; gap:6px; align-items:center; padding:8px 16px; border-radius:2px; flex-shrink:0; color:white; cursor:pointer; }
+.btn-alert span { font-size:13px; }
+.btn-alert .al-txt { font-weight:600; }
+.pricing-stats { display:flex; align-items:center; justify-content:space-between; padding-top:8px; width:100%; }
+.price-block { display:flex; align-items:center; justify-content:space-between; width:416px; }
+.big-price { font-weight:700; font-size:48px; color:#111; white-space:nowrap; line-height:1; }
+.change { display:flex; flex-direction:column; gap:2px; align-items:flex-start; flex-shrink:0; }
+.change-pct { font-weight:600; font-size:14px; color:#1e7e34; white-space:nowrap; }
+.market-status { display:flex; gap:6px; align-items:center; flex-shrink:0; }
+.market-status p { font-weight:400; font-size:12px; color:#555; white-space:nowrap; }
+.mini-stats { display:flex; gap:48px; align-items:flex-start; white-space:nowrap; }
+.stat { display:flex; flex-direction:column; gap:4px; align-items:flex-start; flex-shrink:0; }
+.stat-label { font-weight:400; font-size:12px; color:#888; }
+.stat-value { font-weight:600; font-size:14px; color:#111; }
+
+/* ── Tab Navigation ── */
+.tab-nav-wrap { background:#fff; padding:0 64px; border-bottom:1px solid #e2e8f0; }
+.tab-nav { display:flex; align-items:flex-start; }
+.tab-nav .tab { border-bottom:3px solid transparent; display:flex; align-items:flex-start; padding:16px; cursor:pointer; flex-shrink:0; }
+.tab-nav .tab p { font-family:'Geist',sans-serif; font-weight:500; font-size:14px; color:#76787e; white-space:nowrap; }
+.tab-nav .tab.active { border-bottom-color:black; }
+.tab-nav .tab.active p { font-weight:700; color:black; }
+
+/* ══ EDITORIAL LAYOUT ════════════════════════════════════════════════ */
+.ed-body { padding:64px; display:flex; gap:24px; align-items:flex-start; }
+.ed-main { flex:0 0 1194px; display:flex; flex-direction:column; gap:64px; min-width:0; }
+.ed-rail { flex:0 0 382px; display:flex; flex-direction:column; gap:24px; min-width:0; }
+
+/* 2-col within main */
+.ed-2col { display:flex; align-items:flex-start; width:100%; }
+.ed-col-l { flex:0 0 517px; display:flex; flex-direction:column; min-width:0; }
+.ed-col-sep { flex:0 0 1px; background:#d1d5db; align-self:stretch; margin:0 32px; }
+.ed-col-r { flex:1; display:flex; flex-direction:column; min-width:0; }
+
+/* Editorial header */
+.ed-hdr { display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:16px; border-bottom:2px solid #5c5c5c; gap:3px; margin-bottom:24px; }
+.ed-hdr-label { font-size:11px; font-weight:600; color:#5a5956; letter-spacing:1px; text-transform:uppercase; }
+.ed-hdr-title { font-size:28px; font-weight:400; color:#1a1a1a; line-height:1.2; }
+.ed-hdr-metric { font-size:24px; font-weight:700; color:#1c1c1b; line-height:1.2; }
+.ed-hdr-sub { font-size:12px; color:#5a5956; }
+.ed-hdr-link { font-size:13px; font-weight:500; color:#3d67ff; cursor:pointer; margin-top:4px; }
+
+/* ── Analyst Consensus content (editorial, no card) ── */
+.ac-posbar { display:flex; flex-direction:column; gap:3px; align-items:flex-start; overflow:hidden; width:100%; }
+.ac-track-frame { height:12px; overflow:hidden; position:relative; width:100%; }
+.ac-track { position:absolute; background:#eae9e5; height:4px; left:0; border-radius:2px; top:4px; width:100%; }
+.ac-filled { position:absolute; background:#000; height:4px; left:0; border-radius:2px; top:4px; width:77.6%; }
+.ac-marker { position:absolute; left:calc(77.6% - 5px); width:10px; height:10px; top:1px; }
+.ac-marker img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.ac-bar-labels { display:flex; align-items:flex-start; justify-content:space-between; overflow:hidden; position:relative; width:100%; white-space:nowrap; }
+.ac-bar-labels .sell-lbl,.ac-bar-labels .buy-lbl { font-weight:400; font-size:10px; color:#8c8c8c; }
+.ac-bar-labels .score-lbl { position:absolute; font-weight:700; font-size:12px; color:#1c1c1b; left:calc(77.6% - 7px); top:-1.5px; }
+.ac-divider { background:#eae9e5; height:1px; width:100%; flex-shrink:0; margin:16px 0; }
+.ac-breakdown { display:flex; flex-direction:column; gap:5px; align-items:flex-start; width:100%; flex-shrink:0; }
+.ac-breakdown-title { font-weight:600; font-size:12px; color:#646464; white-space:nowrap; }
+.ac-breakdown-row { display:flex; gap:6px; height:14px; align-items:center; width:100%; flex-shrink:0; }
+.ac-breakdown-row .lbl { font-weight:400; font-size:12px; color:#3c3c3c; height:14px; width:88px; flex-shrink:0; line-height:14px; }
+.ac-bar-wrap { background:#eeede9; display:flex; flex:1; height:6px; align-items:center; min-width:1px; overflow:hidden; border-radius:3px; position:relative; }
+.ac-bar-fill { height:100%; border-radius:3px; flex-shrink:0; }
+.ac-breakdown-row .count { font-weight:600; font-size:12px; color:#282828; height:14px; line-height:14px; text-align:right; width:22px; flex-shrink:0; }
+
+/* Outperform badge */
+.ac-badge-lg { background:#e0f6e0; display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; margin-bottom:8px; }
+.ac-badge-lg p { font-weight:600; font-size:14px; color:#1e781e; }
+.ac-score-row { display:flex; align-items:center; justify-content:space-between; width:100%; margin-bottom:12px; }
+.ac-score-row .analysts { font-weight:500; font-size:13px; color:#363634; }
+.ac-score-row .score { font-weight:400; font-size:12px; color:#5a5956; }
+
+/* ── Price Targets content (editorial) ── */
+.pt-chart-wrap { position:relative; width:100%; }
+.pt-chart-img { width:100%; display:block; border-radius:8px; }
+.pt-targets-row { display:flex; gap:24px; margin-top:12px; }
+.pt-target-item { display:flex; flex-direction:column; gap:2px; }
+.pt-target-item .label { font-size:12px; font-weight:600; color:#363634; }
+.pt-target-item .pct { font-size:11px; font-weight:600; }
+
+/* ── Consensus Trend (editorial) ── */
+.ct-chart-area { height:284px; position:relative; flex-shrink:0; width:100%; }
+.ct-x-labels { display:flex; font-weight:400; font-size:11px; color:#5a5956; align-items:center; justify-content:space-between; width:422px; flex-shrink:0; white-space:nowrap; margin-top:8px; }
+.ct-legend { display:flex; gap:20px; align-items:center; margin-top:12px; }
+.ct-legend-item { display:flex; gap:6px; align-items:center; }
+.ct-legend-line { height:3px; border-radius:1.5px; flex-shrink:0; width:16px; }
+.ct-legend-item p { font-weight:400; font-size:12px; color:#5a5956; }
+.ct-tooltip { position:absolute; background:white; display:none; flex-direction:column; gap:4px; align-items:flex-start; padding:10px 12px; border-radius:8px; box-shadow:0px 2px 8px 0px rgba(0,0,0,0.08); width:170px; left:140px; top:110px; z-index:10; }
+.ct-guide-line { position:absolute; top:0; bottom:0; width:1px; background:#c8c6be; opacity:0.7; pointer-events:none; left:325px; }
+.ct-tooltip .tt-date { font-weight:600; font-size:12px; color:#1c1c1b; }
+.ct-tooltip .tt-price,.ct-tooltip .tt-target { font-weight:400; font-size:12px; color:#1c1c1b; }
+.ct-tooltip .tt-target { color:#5a5956; }
+.ct-tooltip .tt-diff { font-weight:600; font-size:11px; color:#22884a; }
+
+/* ── Analyst Actions (editorial) ── */
+.aa-filter-row { display:flex; gap:8px; align-items:flex-start; margin-bottom:16px; }
+.aa-filter-pill { border:1px solid #e5e7eb; display:flex; gap:6px; align-items:center; padding:6px 12px; border-radius:6px; flex-shrink:0; cursor:pointer; background:#fff; }
+.aa-filter-pill .filter-label { font-weight:400; font-size:12px; color:#6b7280; white-space:nowrap; }
+.aa-filter-pill .filter-value { font-weight:600; font-size:12px; color:#1f2937; white-space:nowrap; }
+.aa-filter-pill .chevron { width:10px; height:10px; flex-shrink:0; position:relative; }
+.aa-filter-pill .chevron img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.aa-table-head { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; display:flex; font-weight:600; font-size:12px; color:#6b7280; gap:16px; align-items:flex-start; padding:10px 24px 10px 23px; width:100%; }
+.aa-col-date { flex-shrink:0; width:80px; }
+.aa-col-action { flex-shrink:0; width:120px; }
+.aa-col-firm { flex-shrink:0; width:180px; }
+.aa-col-price { flex:1; min-width:1px; text-align:right; }
+.aa-table-body { display:flex; flex-direction:column; width:100%; }
+.aa-row-wrap { border-bottom:1px solid #e5e7eb; display:flex; align-items:center; width:100%; }
+.aa-row-wrap:last-child { border-bottom:none; }
+.aa-row-wrap:hover { background:#f8f8f6; }
+.aa-accent-bar { width:3px; flex-shrink:0; align-self:stretch; }
+.aa-row-cells { display:flex; flex:1; gap:16px; align-items:center; min-width:1px; padding:12px 24px 12px 20px; }
+.aa-cell-date { font-weight:500; font-size:13px; color:#6b7280; width:80px; flex-shrink:0; }
+.aa-cell-action { font-weight:600; font-size:13px; width:120px; flex-shrink:0; }
+.aa-cell-firm { font-weight:500; font-size:13px; color:#1f2937; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width:180px; flex-shrink:0; }
+.aa-cell-price { display:flex; flex:1; gap:8px; align-items:center; justify-content:flex-end; min-width:1px; white-space:nowrap; }
+.aa-cell-price .new-pt { font-weight:600; font-size:13px; color:#1f2937; }
+.aa-cell-price .arrow { font-weight:400; font-size:11px; color:#6b7280; }
+.aa-cell-price .old-pt { font-weight:400; font-size:12px; color:#6b7280; }
+.aa-pagination { display:flex; height:42px; align-items:center; justify-content:space-between; padding-top:16px; width:100%; }
+.aa-pagination .entries { font-weight:400; font-size:12px; color:#6b7280; }
+.aa-pagination-controls { display:flex; gap:16px; align-items:center; }
+.aa-pagination-controls .page-info { font-weight:600; font-size:12px; color:#1f2937; }
+.pg-btn { height:22px; width:3.5px; position:relative; flex-shrink:0; cursor:pointer; }
+.pg-btn img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+/* ── Analyst Ratings (editorial) ── */
+.ar-title-row { display:flex; align-items:center; justify-content:space-between; width:100%; white-space:nowrap; margin-bottom:16px; }
+.ar-count { font-weight:400; font-size:12px; color:#5a5956; }
+.ar-filter-row { display:flex; gap:8px; align-items:center; width:100%; margin-bottom:16px; }
+.ar-filter-pill { border:1px solid #eae9e5; background:white; display:flex; align-items:center; padding:6px 12px; border-radius:16px; flex-shrink:0; cursor:pointer; }
+.ar-filter-pill p { font-weight:500; font-size:11px; color:#787d87; white-space:nowrap; }
+.ar-table { display:flex; flex-direction:column; width:100%; }
+.ar-table-head { display:flex; align-items:center; padding:10px 24px; width:100%; background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; gap:16px; }
+.ar-table-head .col { display:flex; flex:1; align-items:flex-start; min-width:1px; }
+.ar-table-head .col p { font-weight:600; font-size:11px; color:#787d87; white-space:nowrap; }
+.ar-divider { height:1px; background:#eae9e5; width:100%; }
+.ar-row { display:flex; flex-direction:column; width:100%; }
+.ar-row:hover .ar-row-content { background:#f8f8f6; }
+.ar-row-content { display:flex; flex:1; align-items:center; min-height:1px; padding:12px 24px; width:100%; gap:16px; }
+.ar-cell { display:flex; flex:1; align-items:flex-start; min-width:1px; }
+.ar-cell-analyst { font-weight:500; font-size:12px; color:#1c1c1b; white-space:nowrap; }
+.ar-cell-firm { font-weight:400; font-size:12px; color:#1c1c1b; white-space:nowrap; }
+.ar-rating-badge { display:flex; align-items:flex-start; padding:4px 8px; border-radius:4px; }
+.ar-rating-badge p { font-weight:600; font-size:11px; white-space:nowrap; }
+.ar-badge-buy { background:#eaf7ee; } .ar-badge-buy p { color:#228b54; }
+.ar-badge-hold { background:#f1f2f4; } .ar-badge-hold p { color:#787d87; }
+.ar-badge-sell { background:#fde8e8; } .ar-badge-sell p { color:#d63031; }
+.ar-cell-date { font-weight:400; font-size:12px; color:#5a5956; white-space:nowrap; }
+.ar-cell-target { font-weight:400; font-size:12px; color:#1c1c1b; white-space:nowrap; }
+.ar-avatar { width:32px; height:32px; border-radius:50%; overflow:hidden; flex-shrink:0; position:relative; }
+.ar-avatar img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.ar-col-avatar { flex:0 0 48px; min-width:0; }
+.ar-cell-avatar { flex:0 0 48px; min-width:0; display:flex; align-items:center; }
+.ar-pagination { display:flex; align-items:center; justify-content:space-between; padding-top:16px; width:100%; }
+.ar-pagination .entries { font-weight:400; font-size:12px; color:#6b7280; }
+.ar-pagination-ctrl { display:flex; gap:16px; align-items:center; }
+.ar-pagination-ctrl .page-info { font-weight:600; font-size:12px; color:#1f2937; }
+
+/* ── Forward Estimates (editorial) ── */
+.fe-table-head { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; display:flex; font-weight:600; font-size:11px; color:#6b7280; text-transform:uppercase; gap:16px; align-items:flex-start; padding:10px 24px; width:100%; }
+.fe-col-metric { width:160px; flex-shrink:0; }
+.fe-col-val { flex:1; min-width:1px; text-align:right; }
+.fe-table-body { display:flex; flex-direction:column; width:100%; }
+.fe-row { border-bottom:1px solid #e5e7eb; display:flex; align-items:center; width:100%; transition:background 0.1s; }
+.fe-row:last-child { border-bottom:none; }
+.fe-row:hover { background:#f8f8f6; }
+.fe-accent-bar { width:3px; flex-shrink:0; align-self:stretch; }
+.fe-row-cells { display:flex; flex:1; gap:16px; align-items:center; padding:14px 24px 14px 20px; }
+.fe-cell-metric { font-weight:600; font-size:13px; color:#1f2937; width:160px; flex-shrink:0; }
+.fe-cell-val { flex:1; min-width:1px; font-weight:500; font-size:13px; color:#1f2937; text-align:right; }
+.fe-pagination { display:flex; height:42px; align-items:center; justify-content:space-between; padding-top:16px; width:100%; }
+.fe-pagination .entries { font-weight:400; font-size:12px; color:#6b7280; }
+.fe-pagination-controls { display:flex; gap:16px; align-items:center; }
+.fe-pagination-controls .page-info { font-weight:600; font-size:12px; color:#1f2937; }
+
+/* ── EPS Surprise (editorial) ── */
+.eps-chart-container { height:280px; position:relative; width:100%; flex-shrink:0; }
+.eps-col { position:absolute; top:0; bottom:0; opacity:0.65; }
+.eps-grid-line { position:absolute; left:0; right:5.89%; height:1px; }
+.eps-grid-line::after { content:''; display:block; width:100%; height:1px; background:#c8c6be; opacity:0.5; }
+.eps-y-label { position:absolute; right:20px; font-weight:500; font-size:11px; color:#5a5956; text-align:right; width:36px; }
+.eps-dot { position:absolute; width:12px; height:12px; }
+.eps-dot img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.eps-x-labels { display:flex; width:100%; position:relative; height:28px; flex-shrink:0; }
+.eps-x-label { position:absolute; text-align:center; transform:translateX(-50%); display:flex; flex-direction:column; gap:2px; align-items:center; }
+.eps-x-label .qtr { font-weight:600; font-size:11px; color:#1c1c1b; }
+.eps-x-label .dt { font-weight:400; font-size:10px; color:#5a5956; }
+.eps-divider { background:#eae9e5; height:1px; width:100%; margin:16px 0 12px; }
+.eps-legend { display:flex; gap:24px; align-items:center; }
+.eps-legend-item { display:flex; gap:8px; align-items:center; }
+.eps-legend-dot { width:10px; height:10px; flex-shrink:0; position:relative; }
+.eps-legend-dot img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.eps-legend-label { font-weight:500; font-size:11px; color:#5a5956; }
+
+/* ── Valuation Multiples (editorial) ── */
+.vm-table-head { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; display:flex; font-weight:600; font-size:11px; color:#6b7280; text-transform:uppercase; gap:16px; align-items:flex-start; padding:10px 24px; width:100%; }
+.vm-col-name { width:220px; flex-shrink:0; }
+.vm-col-val { flex:1; min-width:1px; text-align:right; }
+.vm-table-body { display:flex; flex-direction:column; width:100%; }
+.vm-row { border-bottom:1px solid #e5e7eb; display:flex; gap:16px; align-items:center; padding:14px 24px; width:100%; transition:background 0.1s; }
+.vm-row:last-child { border-bottom:none; }
+.vm-row:hover { background:#f8f8f6; }
+.vm-cell-name { font-weight:600; font-size:13px; color:#1f2937; width:220px; flex-shrink:0; }
+.vm-cell-val { flex:1; min-width:1px; font-weight:500; font-size:13px; color:#1c1c1b; text-align:right; }
+.vm-cell-val.dim { color:#5a5956; }
+.vm-pagination { display:flex; height:42px; align-items:center; justify-content:space-between; padding-top:16px; width:100%; }
+.vm-pagination .entries { font-weight:400; font-size:12px; color:#6b7280; }
+.vm-pagination-controls { display:flex; gap:16px; align-items:center; }
+.vm-pagination-controls .page-info { font-weight:400; font-size:12px; color:#1f2937; }
+
+/* ── Financial Highlights (editorial) ── */
+.fh-table { display:flex; flex-direction:column; width:100%; }
+.fh-table-head { background:#faf9f6; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; display:flex; font-weight:600; font-size:11px; color:#6b7280; text-transform:uppercase; gap:16px; padding:10px 24px; width:100%; }
+.fh-col-name { width:280px; flex-shrink:0; }
+.fh-col-val { flex:1; min-width:1px; text-align:right; }
+.fh-row { border-bottom:1px solid #e5e7eb; display:flex; gap:16px; align-items:center; padding:14px 24px; width:100%; transition:background 0.1s; }
+.fh-row:last-child { border-bottom:none; }
+.fh-row:hover { background:#f8f8f6; }
+.fh-cell-name { font-weight:600; font-size:13px; color:#1f2937; width:280px; flex-shrink:0; }
+.fh-cell-val { flex:1; min-width:1px; font-weight:500; font-size:13px; color:#1c1c1b; text-align:right; }
+.fh-cell-val.pos { color:#228b54; }
+.fh-cell-val.neg { color:#be3c3c; }
+.fh-cell-val.dim { color:#5a5956; }
+
+/* ── Analyst FAQ (editorial) ── */
+.faq-list { display:flex; flex-direction:column; width:100%; }
+.faq-item { border-bottom:1px solid #eae9e5; padding:20px 0; display:flex; align-items:flex-start; gap:16px; justify-content:space-between; cursor:pointer; }
+.faq-item:last-child { border-bottom:none; }
+.faq-item:hover .faq-question { color:#3d67ff; }
+.faq-question { font-size:15px; font-weight:500; color:#1c1c1b; flex:1; line-height:1.4; }
+.faq-chevron { width:16px; height:16px; flex-shrink:0; position:relative; margin-top:2px; }
+.faq-chevron img { position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+/* ── RAIL Cards ── */
+.card { background:white; border:1px solid #eae9e5; border-radius:16px; overflow:hidden; width:100%; }
+
+.news-card { padding:24px; display:flex; flex-direction:column; gap:20px; }
+.news-header { display:flex; align-items:center; justify-content:space-between; width:100%; }
+.news-header .news-title { font-weight:700; font-size:11px; color:#1c1c1b; letter-spacing:1px; text-transform:uppercase; }
+.news-header .view-all { font-weight:600; font-size:12px; color:#5a5956; cursor:pointer; }
+.news-featured { display:flex; gap:16px; align-items:flex-start; width:100%; }
+.news-thumb { border-radius:8px; flex-shrink:0; width:80px; height:80px; position:relative; overflow:hidden; }
+.news-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:8px; }
+.news-featured-content { display:flex; flex:1; flex-direction:column; gap:4px; min-width:1px; }
+.news-featured-content .headline { font-weight:700; font-size:14px; color:#1c1c1b; line-height:19px; }
+.news-featured-content .meta { font-weight:400; font-size:12px; color:#5a5956; white-space:nowrap; }
+.news-divider { border:none; border-top:1px solid #eae9e5; width:100%; margin:0; }
+.news-list { display:flex; flex-direction:column; gap:16px; width:100%; }
+.news-item { display:flex; flex-direction:column; gap:16px; width:100%; }
+.news-item .text-block { display:flex; flex-direction:column; gap:4px; width:100%; }
+.news-item .text-block .headline { font-weight:600; font-size:13px; color:#1c1c1b; line-height:18px; }
+.news-item .text-block .meta { font-weight:400; font-size:11px; color:#5a5956; }
+.news-item:last-child .news-divider { display:none; }
+
+.key-events-card { padding:24px; display:flex; flex-direction:column; }
+.ke-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; width:100%; }
+.ke-header .ke-title { font-weight:700; font-size:11px; color:#363634; letter-spacing:1.5px; text-transform:uppercase; }
+.ke-header .ke-subtitle { font-weight:500; font-size:12px; color:#868582; }
+.ke-header-divider { border:none; border-top:1.5px solid #eae9e5; width:100%; margin:0; }
+.ke-events { display:flex; flex-direction:column; width:100%; }
+.ke-row-wrap { display:flex; flex-direction:column; width:100%; }
+.ke-row-content { display:flex; gap:20px; align-items:center; padding:16px 0; width:100%; }
+.ke-row-wrap:hover .ke-row-content { background:#f8f8f6; }
+.ke-date-block { display:flex; flex-direction:column; gap:2px; align-items:center; text-align:center; width:52px; flex-shrink:0; }
+.ke-date-block .month { font-weight:600; font-size:11px; color:#868582; letter-spacing:1px; text-transform:uppercase; }
+.ke-date-block .day { font-weight:700; font-size:24px; color:#363634; line-height:1; }
+.ke-details { display:flex; flex:1; flex-direction:column; gap:4px; min-width:1px; }
+.ke-details .event-title { font-weight:700; font-size:14px; color:#363634; }
+.ke-details .event-desc { font-weight:400; font-size:12px; color:#868582; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; line-height:1.4; }
+.ke-tag { background:#f8f8f6; border:1px solid #eae9e5; display:flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:6px; flex-shrink:0; }
+.ke-tag p { font-weight:600; font-size:11px; color:#363634; white-space:nowrap; }
+.ke-row-divider { border:none; border-top:1px solid #eae9e5; width:100%; margin:0; }
+.ke-row-wrap:last-child .ke-row-divider { display:none; }
+
+.kr-card { padding:24px; display:flex; flex-direction:column; gap:20px; }
+.kr-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; width:100%; }
+.kr-title-group { display:flex; flex-direction:column; gap:4px; }
+.kr-title { font-weight:700; font-size:11px; color:#363634; letter-spacing:1.5px; text-transform:uppercase; }
+.kr-title-sub { font-weight:500; font-size:12px; color:#868582; }
+.kr-view-all { font-weight:600; font-size:12px; color:#5a5956; cursor:pointer; }
+.kr-header-divider { border:none; border-top:1.5px solid #eae9e5; width:100%; margin:0; }
+.kr-risk-list { display:flex; flex-direction:column; width:100%; }
+.kr-risk-item { display:flex; flex-direction:column; width:100%; }
+.kr-item-content { display:flex; gap:16px; align-items:flex-start; padding:16px 0; width:100%; border-left:3px solid transparent; padding-left:12px; transition:background 0.1s; }
+.kr-risk-item:nth-child(1) .kr-item-content { border-left-color:#ef4444; }
+.kr-risk-item:nth-child(3) .kr-item-content { border-left-color:#ef4444; }
+.kr-risk-item:nth-child(2) .kr-item-content,
+.kr-risk-item:nth-child(5) .kr-item-content { border-left-color:#f59e0b; }
+.kr-risk-item:nth-child(4) .kr-item-content { border-left-color:#3b82f6; }
+.kr-risk-item:hover .kr-item-content { background:#f8f8f6; }
+.kr-severity { display:flex; flex-direction:column; gap:2px; align-items:center; text-align:center; width:44px; flex-shrink:0; }
+.kr-sev-label { font-weight:600; font-size:10px; letter-spacing:0.8px; text-transform:uppercase; }
+.kr-sev-value { font-weight:700; font-size:22px; line-height:1; }
+.kr-details { display:flex; flex:1; flex-direction:column; gap:3px; min-width:1px; }
+.kr-risk-title { font-weight:700; font-size:13px; color:#363634; line-height:1.3; }
+.kr-risk-desc { font-weight:400; font-size:12px; color:#868582; line-height:1.4; }
+.kr-metadata { display:flex; gap:4px; align-items:center; padding-top:2px; }
+.kr-metadata .source { font-weight:500; font-size:11px; color:#868582; }
+.kr-metadata .sep,.kr-metadata .date { font-weight:400; font-size:11px; color:#868582; }
+.kr-divider { border:none; border-top:1px solid #eae9e5; width:100%; margin:0; }
+.kr-risk-item:last-child .kr-divider { display:none; }
+</style>
+</head>
+<body>
+
+<!-- ══ ADVFN NAV ══════════════════════════════════════════════════════ -->
+<nav class="advfn-nav">
+  <div class="advfn-logo">ADVFN</div>
+  <div class="nav-links">
+    <span class="nav-link active">Markets</span>
+    <span class="nav-link">Shares</span>
+    <span class="nav-link">Funds</span>
+    <span class="nav-link">Portfolio</span>
+    <span class="nav-link">News</span>
+    <span class="nav-link">Tools</span>
+    <span class="nav-link">Charts</span>
+  </div>
+  <div class="nav-right">
+    <button class="nav-btn">Log in</button>
+    <button class="nav-btn" style="background:#ff6b35;border-color:#ff6b35;color:#fff;">Sign up free</button>
+  </div>
+</nav>
+
+<!-- ══ TICKER BAR ════════════════════════════════════════════════════ -->
+<div class="ticker-bar">
+  <div class="ticker-item"><span class="ticker-symbol">DJIA</span><span class="ticker-price">39,148.82</span><span class="ticker-change pos">+0.41%</span></div>
+  <span class="ticker-sep">|</span>
+  <div class="ticker-item"><span class="ticker-symbol">SPX</span><span class="ticker-price">5,283.40</span><span class="ticker-change pos">+0.87%</span></div>
+  <span class="ticker-sep">|</span>
+  <div class="ticker-item"><span class="ticker-symbol">NDX</span><span class="ticker-price">18,432.11</span><span class="ticker-change pos">+1.23%</span></div>
+  <span class="ticker-sep">|</span>
+  <div class="ticker-item"><span class="ticker-symbol">FTSE 100</span><span class="ticker-price">8,203.93</span><span class="ticker-change neg">-0.14%</span></div>
+  <span class="ticker-sep">|</span>
+  <div class="ticker-item"><span class="ticker-symbol">BTC/USD</span><span class="ticker-price">61,843.20</span><span class="ticker-change pos">+2.18%</span></div>
+</div>
+
+<!-- ══ ALERT BANNER ══════════════════════════════════════════════════ -->
+<div class="alert-banner">
+  <p>⚡ <strong>FIG Earnings Alert:</strong> Q2 2026 results on Aug 14, after market close. Consensus EPS: $0.24 · Revenue: $842M</p>
+</div>
+
+<!-- ══ STOCK HEADER ══════════════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="stock-header">
+    <div class="company-context">
+      <div class="left-info">
+        <div style="height:39.448px;width:26.299px;position:relative;flex-shrink:0;">
+          <img alt="Figma logo" style="display:block;width:100%;height:100%;position:absolute;inset:0;" src="assets/e6de5dd6b3544edfd908ef5472bbd18076843b0f.svg" />
+        </div>
+        <div class="company-details">
+          <div class="name-row">
+            <p class="ticker-name">FIG</p>
+            <p class="co-name">Figma Inc.</p>
+            <p class="co-exchange">NASDAQ Composite Index</p>
+          </div>
+          <p class="exchange-badge">NYSE · USD · COMMON STOCK</p>
+          <div class="realtime-badge"><p>◉ REAL-TIME</p></div>
+        </div>
+      </div>
+      <div class="right-actions">
+        <div class="btn-watchlist"><span class="wl-star">☆</span><span class="wl-txt">Watchlist</span></div>
+        <div class="btn-alert"><span>△</span><span class="al-txt">Set Price Alert</span></div>
+      </div>
+    </div>
+    <div class="pricing-stats">
+      <div class="price-block">
+        <p class="big-price">$23.29</p>
+        <div class="change">
+          <p class="change-pct">+0.42 (+1.84%) ▲</p>
+          <div class="market-status">
+            <div style="position:relative;width:6px;height:6px;flex-shrink:0;">
+              <img alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block;" src="assets/1157b1eaced9b5c0f22aa3a03d3180d030b7d595.svg" />
+            </div>
+            <p>Market Open · As of Aug 14, 15:42 ET</p>
+          </div>
+        </div>
+      </div>
+      <div class="mini-stats">
+        <div class="stat"><p class="stat-label">Volume</p><p class="stat-value">138,201,589</p></div>
+        <div class="stat"><p class="stat-label">Prev Close</p><p class="stat-value">$22.87</p></div>
+        <div class="stat"><p class="stat-label">Day's Range</p><p class="stat-value">$22.50 - $23.45</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB NAVIGATION ════════════════════════════════════════════════ -->
+<div class="tab-nav-wrap">
+  <div class="tab-nav">
+    <div class="tab"><p>Overview</p></div>
+    <div class="tab"><p>Chart</p></div>
+    <div class="tab"><p>Financials</p></div>
+    <div class="tab active"><p>Analysts &amp; Estimates</p></div>
+    <div class="tab"><p>Level 2</p></div>
+    <div class="tab"><p>Time &amp; Sales</p></div>
+    <div class="tab"><p>News</p></div>
+    <div class="tab"><p>Price History</p></div>
+    <div class="tab"><p>Forum</p></div>
+    <div class="tab"><p>Company Profile</p></div>
+    <div class="tab"><p>Ownership</p></div>
+    <div class="tab"><p>Insider Activity</p></div>
+  </div>
+</div>
+
+<!-- ══ EDITORIAL BODY ════════════════════════════════════════════════ -->
+<div class="ed-body">
+
+  <!-- ── MAIN COLUMN ────────────────────────────────────────────────── -->
+  <div class="ed-main">
+
+    <!-- ═══ BLOCK 1: Analyst Consensus + Price Targets ══════════════ -->
+    <div class="ed-2col">
+
+      <!-- LEFT: Analyst Consensus (517px) -->
+      <div class="ed-col-l">
+        <div class="ed-hdr">
+          <span class="ed-hdr-label">Analysts</span>
+          <span class="ed-hdr-title">Analyst Consensus</span>
+          <span class="ed-hdr-metric">Outperform</span>
+          <span class="ed-hdr-sub">Score 4.1 / 5.0 · 28 Analysts · Updated Aug 12</span>
+        </div>
+
+        <!-- Badge + score row -->
+        <div class="ac-score-row">
+          <div class="ac-badge-lg"><p>Outperform</p></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;">
+            <p class="analysts" style="font-weight:500;font-size:13px;color:#363634;">28 Analysts</p>
+            <p style="font-weight:400;font-size:12px;color:#5a5956;">Score: 4.1 / 5.0</p>
+          </div>
+        </div>
+
+        <!-- Position bar -->
+        <div class="ac-posbar">
+          <div class="ac-track-frame">
+            <div class="ac-track"></div>
+            <div class="ac-filled"></div>
+            <div class="ac-marker"><img alt="" src="assets/07847c95c69acd8e017d8ba100c21a7eade22c8b.svg" /></div>
+          </div>
+          <div class="ac-bar-labels">
+            <span class="sell-lbl">Sell</span>
+            <span class="buy-lbl">Buy</span>
+            <span class="score-lbl">4.1</span>
+          </div>
+        </div>
+
+        <div class="ac-divider"></div>
+
+        <!-- Rating breakdown -->
+        <div class="ac-breakdown">
+          <p class="ac-breakdown-title">Rating breakdown</p>
+          <div class="ac-breakdown-row">
+            <p class="lbl">Buy</p>
+            <div class="ac-bar-wrap"><div class="ac-bar-fill" style="background:#228b22;width:56%;"></div></div>
+            <p class="count">8</p>
+          </div>
+          <div class="ac-breakdown-row">
+            <p class="lbl">Outperform</p>
+            <div class="ac-bar-wrap"><div class="ac-bar-fill" style="background:#4caf50;width:70%;"></div></div>
+            <p class="count">10</p>
+          </div>
+          <div class="ac-breakdown-row">
+            <p class="lbl">Hold</p>
+            <div class="ac-bar-wrap"><div class="ac-bar-fill" style="background:#b4b4aa;width:49%;"></div></div>
+            <p class="count">7</p>
+          </div>
+          <div class="ac-breakdown-row">
+            <p class="lbl">Underperform</p>
+            <div class="ac-bar-wrap"><div class="ac-bar-fill" style="background:#e67e22;width:14%;"></div></div>
+            <p class="count">2</p>
+          </div>
+          <div class="ac-breakdown-row">
+            <p class="lbl">Sell</p>
+            <div class="ac-bar-wrap"><div class="ac-bar-fill" style="background:#d63031;width:7%;"></div></div>
+            <p class="count">1</p>
+          </div>
+          <div class="ac-breakdown-row">
+            <p class="lbl">No opinion</p>
+            <div class="ac-bar-wrap"></div>
+            <p class="count">0</p>
+          </div>
+        </div>
+
+        <div class="ac-divider"></div>
+        <p class="ed-hdr-link">View all analyst ratings →</p>
+      </div>
+
+      <!-- SEPARATOR -->
+      <div class="ed-col-sep"></div>
+
+      <!-- RIGHT: Price Targets (fills remaining) -->
+      <div class="ed-col-r">
+        <div class="ed-hdr">
+          <span class="ed-hdr-label">Targets</span>
+          <span class="ed-hdr-title">Price Targets</span>
+          <span class="ed-hdr-metric">US$314.29</span>
+          <span class="ed-hdr-sub">12-month average target · 65 Analysts</span>
+        </div>
+
+        <!-- Chart image fills column width -->
+        <div class="pt-chart-wrap">
+          <img class="pt-chart-img" alt="Price Targets Chart" src="assets/260d9b17e2e40de807306572a3168d242ac478db.png" />
+        </div>
+
+        <!-- Target summary row -->
+        <div class="pt-targets-row">
+          <div class="pt-target-item">
+            <span class="label">High · US$743.10</span>
+            <span class="pct" style="color:#228b54;">+230.15%</span>
+          </div>
+          <div class="pt-target-item">
+            <span class="label">Avg · US$314.29</span>
+            <span class="pct" style="color:#228b54;">+39.63%</span>
+          </div>
+          <div class="pt-target-item">
+            <span class="label">Low · US$180</span>
+            <span class="pct" style="color:#be3c3c;">-20.03%</span>
+          </div>
+        </div>
+
+        <p style="font-size:11px;color:#5a5956;margin-top:8px;">Aug '25 → Aug '26 → Aug '27 (12-month forward)</p>
+      </div>
+    </div><!-- /BLOCK 1 -->
+
+    <!-- ═══ BLOCK 2: Consensus Trend + Analyst Actions ══════════════ -->
+    <div class="ed-2col">
+
+      <!-- LEFT: Consensus Trend (517px) -->
+      <div class="ed-col-l">
+        <div class="ed-hdr">
+          <span class="ed-hdr-label">Trend</span>
+          <span class="ed-hdr-title">Consensus Trend</span>
+          <span class="ed-hdr-metric">US$314.29</span>
+          <span class="ed-hdr-sub">14-week price vs. mean analyst target · 56 Analysts</span>
+        </div>
+
+        <div class="ct-chart-area">
+          <!-- ref line top -->
+          <div style="position:absolute;height:0;left:0;top:20px;width:422px;">
+            <div style="position:absolute;inset:-1px 0 0 0;">
+              <img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/60b3daf466186dc0a9dfbff80cff4c7716b34262.svg" />
+            </div>
+          </div>
+          <!-- ref line bottom -->
+          <div style="position:absolute;height:0;left:0;top:245px;width:422px;">
+            <div style="position:absolute;inset:-1px 0 0 0;">
+              <img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/60b3daf466186dc0a9dfbff80cff4c7716b34262.svg" />
+            </div>
+          </div>
+          <!-- Mean target line -->
+          <div style="position:absolute;left:0;top:90px;width:70px;height:2px;display:flex;align-items:center;justify-content:center;">
+            <div style="transform:rotate(1.64deg);flex:none;"><div style="height:0;position:relative;width:70.03px;"><div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/9c874246275f6a25077b4a3efd9e2658755d2471.png" /></div></div></div>
+          </div>
+          <div style="position:absolute;left:70px;top:91px;width:70px;height:1px;">
+            <div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/a5838d0a602745d933c7c62d75b5a921222414d8.png" /></div>
+          </div>
+          <div style="position:absolute;left:140px;top:93px;width:70px;height:1px;">
+            <div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/a5838d0a602745d933c7c62d75b5a921222414d8.png" /></div>
+          </div>
+          <div style="position:absolute;left:210px;top:94px;width:70px;height:1px;">
+            <div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/a5838d0a602745d933c7c62d75b5a921222414d8.png" /></div>
+          </div>
+          <div style="position:absolute;left:280px;top:95px;width:45px;height:0;">
+            <div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/3d204116e45904195c1902521c200c6c55967bc4.png" /></div>
+          </div>
+          <div style="position:absolute;left:325px;top:96px;width:25px;height:1px;">
+            <div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/d2d14cf0ac39e49efa1e9e9b3ff4117676b9ac63.png" /></div>
+          </div>
+          <div style="position:absolute;left:350px;top:97px;width:72px;height:2px;">
+            <div style="position:absolute;inset:-2px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/a2b9386529bdff293d77ac203ab58f84e07edd84.png" /></div>
+          </div>
+          <!-- Stock price line -->
+          <div style="position:absolute;left:0;top:238px;width:70px;height:2px;display:flex;align-items:center;justify-content:center;">
+            <div style="transform:rotate(-1.64deg);flex:none;"><div style="height:0;position:relative;width:70.03px;"><div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/3c1e836d116cec2f75a35438ed623fc4e4cc4ce4.svg" /></div></div></div>
+          </div>
+          <div style="position:absolute;left:70px;top:236px;width:70px;height:2px;display:flex;align-items:center;justify-content:center;">
+            <div style="transform:rotate(-1.64deg);flex:none;"><div style="height:0;position:relative;width:70.03px;"><div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/3c1e836d116cec2f75a35438ed623fc4e4cc4ce4.svg" /></div></div></div>
+          </div>
+          <div style="position:absolute;left:140px;top:234px;width:70px;height:1px;">
+            <div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/b6a4fb8da453992d8e7723ac37c677380534a76a.svg" /></div>
+          </div>
+          <div style="position:absolute;left:210px;top:231px;width:70px;height:2px;display:flex;align-items:center;justify-content:center;">
+            <div style="transform:rotate(-1.64deg);flex:none;"><div style="height:0;position:relative;width:70.03px;"><div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/3c1e836d116cec2f75a35438ed623fc4e4cc4ce4.svg" /></div></div></div>
+          </div>
+          <div style="position:absolute;left:280px;top:229px;width:45px;height:1px;">
+            <div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/cc6f6405c00bc2d3538c7acb0a1e1189865460f6.svg" /></div>
+          </div>
+          <div style="position:absolute;left:325px;top:228px;width:25px;height:0;">
+            <div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/bbc27c80c3f97192e7e0ee79b280168c4b3faa90.svg" /></div>
+          </div>
+          <div style="position:absolute;left:350px;top:226px;width:72px;height:2px;display:flex;align-items:center;justify-content:center;">
+            <div style="transform:rotate(-1.59deg);flex:none;"><div style="height:0;position:relative;width:72.03px;"><div style="position:absolute;inset:-1.5px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/3f9afd9277e16d1ea659d96167bc7ea95122f9a9.svg" /></div></div></div>
+          </div>
+          <!-- Guide line -->
+          <div style="position:absolute;display:flex;height:275px;align-items:center;justify-content:center;left:325px;top:19.5px;width:0;">
+            <div style="transform:rotate(-90deg);flex:none;"><div style="height:0;position:relative;width:275px;"><div style="position:absolute;inset:-1px 0 0 0;"><img alt="" style="display:block;max-width:none;width:100%;height:100%;" src="assets/358fc5a412b415ea56cd27d16abed516e2e5f501.svg" /></div></div></div>
+          </div>
+          <!-- Dots -->
+          <div style="position:absolute;left:319px;top:90px;width:12px;height:12px;">
+            <img alt="" style="position:absolute;inset:0;display:block;max-width:none;width:100%;height:100%;" src="assets/cc7aef46496d30351d7011cbeb3f3c2495ee0bb4.svg" />
+          </div>
+          <div style="position:absolute;left:318px;top:221px;width:14px;height:14px;">
+            <img alt="" style="position:absolute;inset:0;display:block;max-width:none;width:100%;height:100%;" src="assets/afcebb05db1be8841aa35b7c04939f09645d058a.svg" />
+          </div>
+          <div style="position:absolute;left:322px;top:225px;width:6px;height:6px;">
+            <img alt="" style="position:absolute;inset:0;display:block;max-width:none;width:100%;height:100%;" src="assets/0bf74ad3ba4902a66f732546faa103dd8071e669.svg" />
+          </div>
+          <div class="ct-guide-line"></div>
+          <div class="ct-tooltip">
+            <p class="tt-date">Jul 14, 2026</p>
+            <p class="tt-price">Stock Price: $222</p>
+            <p class="tt-target">Mean Target: $315</p>
+            <p class="tt-diff">Difference: +$93 (+41.9%)</p>
+          </div>
+        </div>
+
+        <div class="ct-x-labels">
+          <p>May 5</p><p>May 19</p><p>Jun 2</p><p>Jun 16</p><p>Jun 30</p><p>Jul 14</p><p>Jul 28</p>
+        </div>
+        <div class="ct-legend">
+          <div class="ct-legend-item">
+            <div class="ct-legend-line" style="background:#5a5956;"></div>
+            <p>Stock Price</p>
+          </div>
+          <div class="ct-legend-item">
+            <div class="ct-legend-line" style="background:#c8c6be;"></div>
+            <p>Mean Analyst Target</p>
+          </div>
+        </div>
+      </div><!-- /CT left -->
+
+      <!-- SEPARATOR -->
+      <div class="ed-col-sep"></div>
+
+      <!-- RIGHT: Analyst Actions -->
+      <div class="ed-col-r">
+        <div class="ed-hdr">
+          <span class="ed-hdr-label">Actions</span>
+          <span class="ed-hdr-title">Analyst Actions</span>
+          <span class="ed-hdr-sub">Recent activity · Last 30 days</span>
+        </div>
+
+        <div class="aa-filter-row">
+          <div class="aa-filter-pill">
+            <span class="filter-label">Action Type:</span>
+            <span class="filter-value">&nbsp;All Actions</span>
+            <div class="chevron"><img alt="" src="assets/6073811799453db5a6b58000ed7d92945c1e23f9.svg" /></div>
+          </div>
+          <div class="aa-filter-pill">
+            <span class="filter-label">Date Range:</span>
+            <span class="filter-value">&nbsp;Last 30 days</span>
+            <div class="chevron"><img alt="" src="assets/6073811799453db5a6b58000ed7d92945c1e23f9.svg" /></div>
+          </div>
+        </div>
+
+        <div class="aa-table-head">
+          <p class="aa-col-date">Date</p>
+          <p class="aa-col-action">Action</p>
+          <p class="aa-col-firm">Firm</p>
+          <p class="aa-col-price">Price Target</p>
+        </div>
+
+        <div class="aa-table-body">
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#10b981;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Aug 8</p>
+              <p class="aa-cell-action" style="color:#059669;">Upgrade</p>
+              <p class="aa-cell-firm">Morgan Stanley</p>
+              <div class="aa-cell-price"><p class="new-pt">$350</p><p class="arrow">←</p><p class="old-pt">$280</p></div>
+            </div>
+          </div>
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#3b82f6;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Aug 5</p>
+              <p class="aa-cell-action" style="color:#2563eb;">New Coverage</p>
+              <p class="aa-cell-firm">UBS</p>
+              <div class="aa-cell-price"><p class="new-pt">$320</p></div>
+            </div>
+          </div>
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#10b981;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Aug 1</p>
+              <p class="aa-cell-action" style="color:#059669;">Upgrade</p>
+              <p class="aa-cell-firm">Goldman Sachs</p>
+              <div class="aa-cell-price"><p class="new-pt">$310</p><p class="arrow">←</p><p class="old-pt">$275</p></div>
+            </div>
+          </div>
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#e5e7eb;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Jul 28</p>
+              <p class="aa-cell-action" style="color:#6b7280;">Reiteration</p>
+              <p class="aa-cell-firm">BNP Paribas</p>
+              <div class="aa-cell-price"><p class="new-pt">$240</p><p class="arrow">←</p><p class="old-pt">$240</p></div>
+            </div>
+          </div>
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#e5e7eb;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Jul 25</p>
+              <p class="aa-cell-action" style="color:#6b7280;">Reiteration</p>
+              <p class="aa-cell-firm">JPMorgan</p>
+              <div class="aa-cell-price"><p class="new-pt">$345</p><p class="arrow">←</p><p class="old-pt">$330</p></div>
+            </div>
+          </div>
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#10b981;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Jul 20</p>
+              <p class="aa-cell-action" style="color:#059669;">Upgrade</p>
+              <p class="aa-cell-firm">Deutsche Bank</p>
+              <div class="aa-cell-price"><p class="new-pt">$300</p><p class="arrow">←</p><p class="old-pt">$260</p></div>
+            </div>
+          </div>
+          <div class="aa-row-wrap">
+            <div class="aa-accent-bar" style="background:#ef4444;"></div>
+            <div class="aa-row-cells">
+              <p class="aa-cell-date">Jul 15</p>
+              <p class="aa-cell-action" style="color:#dc2626;">Downgrade</p>
+              <p class="aa-cell-firm">Barclays</p>
+              <div class="aa-cell-price"><p class="new-pt">$190</p><p class="arrow">←</p><p class="old-pt">$225</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="aa-pagination">
+          <p class="entries">Showing 7 entries</p>
+          <div class="aa-pagination-controls">
+            <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
+            <p class="page-info">Page 1 of 5</p>
+            <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+          </div>
+        </div>
+      </div><!-- /AA right -->
+    </div><!-- /BLOCK 2 -->
+
+    <!-- ═══ BLOCK 3: Analyst Ratings (full width) ═══════════════════ -->
+    <div>
+      <div class="ed-hdr">
+        <span class="ed-hdr-label">Ratings</span>
+        <span class="ed-hdr-title">Analyst Ratings</span>
+        <span class="ed-hdr-sub">56 Analysts · Last 12 months</span>
+      </div>
+
+      <div class="ar-filter-row">
+        <div class="ar-filter-pill"><p>Rating ▾</p></div>
+        <div class="ar-filter-pill"><p>Date range ▾</p></div>
+      </div>
+
+      <div class="ar-table">
+        <div class="ar-table-head">
+          <div class="col ar-col-avatar"></div>
+          <div class="col"><p>Analyst</p></div>
+          <div class="col"><p>Firm</p></div>
+          <div class="col"><p>Rating</p></div>
+          <div class="col"><p>Date</p></div>
+          <div class="col"><p>Price Target</p></div>
+        </div>
+        <div class="ar-divider"></div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="J. Chen" src="assets/1cb1129e031e20c33c2a44be1e12dc90c074cf1e.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">J. Chen</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Morgan Stanley</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Aug 8, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$350</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="R. Gupta" src="assets/213be31964178963c0313b6da6bf2962322a0fbc.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">R. Gupta</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">UBS</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Aug 5, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$320</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="S. Patel" src="assets/95b55f73865ae58880a45b7bd753a3f645eaadcc.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">S. Patel</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Goldman Sachs</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Aug 1, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$310</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="L. Durand" src="assets/797b2fe68d2a45e5094c9ec2c1c664d0996664b1.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">L. Durand</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">BNP Paribas</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-hold"><p>Hold (3)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 28, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$240</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="M. Torres" src="assets/c9dd58f2e6b51cf43a5e029a2fd15e824515b86b.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">M. Torres</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">JPMorgan</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 25, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$345</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="H. Kim" src="assets/d6e62d539542578d5f02c0ccaaec99f0597161bd.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">H. Kim</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Deutsche Bank</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-buy"><p>Buy (1)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 20, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$300</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="K. Weber" src="assets/5747788a6bea8cc502de6504cbca03ba2db17f0a.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">K. Weber</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Barclays</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-sell"><p>Sell (5)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 15, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$190</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="C. Moreau" src="assets/8203933a9b71a2968735c134cabfe308fc08a3b5.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">C. Moreau</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Societe Generale</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-hold"><p>Hold (3)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 10, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">—</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="A. Nakamura" src="assets/6a6d5c922f7cbc6c076333c5c2820d6eefa2e6fe.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">A. Nakamura</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">Citi</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-sell"><p>Sell (5)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jul 5, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$160</p></div>
+          </div>
+          <div class="ar-divider"></div>
+        </div>
+
+        <div class="ar-row">
+          <div class="ar-row-content">
+            <div class="ar-cell ar-cell-avatar"><div class="ar-avatar"><img alt="P. O'Brien" src="assets/2e2ec64922a0ab54d798d4038ad715c06b6cae7a.png" /></div></div>
+            <div class="ar-cell"><p class="ar-cell-analyst">P. O'Brien</p></div>
+            <div class="ar-cell"><p class="ar-cell-firm">RBC Capital</p></div>
+            <div class="ar-cell"><div class="ar-rating-badge ar-badge-hold"><p>Hold (3)</p></div></div>
+            <div class="ar-cell"><p class="ar-cell-date">Jun 30, 2026</p></div>
+            <div class="ar-cell"><p class="ar-cell-target">$195</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ar-pagination">
+        <p class="entries">Showing 10 entries</p>
+        <div class="ar-pagination-ctrl">
+          <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
+          <p class="page-info">Page 1 of 6</p>
+          <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+        </div>
+      </div>
+    </div><!-- /BLOCK 3 -->
+
+    <!-- ═══ BLOCK 4: Forward Estimates (full width) ══════════════════ -->
+    <div>
+      <div class="ed-hdr">
+        <span class="ed-hdr-label">Estimates</span>
+        <span class="ed-hdr-title">Forward Estimates</span>
+        <span class="ed-hdr-sub">Analyst consensus forecasts · FY2026E – FY2027E</span>
+      </div>
+
+      <div class="fe-table-head">
+        <div class="fe-col-metric">Metric</div>
+        <div class="fe-col-val">Current Quarter</div>
+        <div class="fe-col-val">Next Quarter</div>
+        <div class="fe-col-val">Current Year</div>
+        <div class="fe-col-val">Next Year</div>
+        <div class="fe-col-val">Next 12 Months</div>
+      </div>
+      <div class="fe-table-body">
+        <div class="fe-row">
+          <div class="fe-accent-bar" style="background:#3b82f6;"></div>
+          <div class="fe-row-cells">
+            <p class="fe-cell-metric">EPS</p>
+            <p class="fe-cell-val">$1.24</p>
+            <p class="fe-cell-val">$1.31</p>
+            <p class="fe-cell-val">$5.42</p>
+            <p class="fe-cell-val">$6.18</p>
+            <p class="fe-cell-val">$5.86</p>
+          </div>
+        </div>
+        <div class="fe-row">
+          <div class="fe-accent-bar" style="background:#10b981;"></div>
+          <div class="fe-row-cells">
+            <p class="fe-cell-metric">Revenue</p>
+            <p class="fe-cell-val">$8.2B</p>
+            <p class="fe-cell-val">$8.7B</p>
+            <p class="fe-cell-val">$34.5B</p>
+            <p class="fe-cell-val">$38.2B</p>
+            <p class="fe-cell-val">$36.1B</p>
+          </div>
+        </div>
+        <div class="fe-row">
+          <div class="fe-accent-bar" style="background:#f59e0b;"></div>
+          <div class="fe-row-cells">
+            <p class="fe-cell-metric">EBITDA</p>
+            <p class="fe-cell-val">$2.1B</p>
+            <p class="fe-cell-val">$2.3B</p>
+            <p class="fe-cell-val">$8.9B</p>
+            <p class="fe-cell-val">$10.4B</p>
+            <p class="fe-cell-val">$9.6B</p>
+          </div>
+        </div>
+      </div>
+      <div class="fe-pagination">
+        <p class="entries">Showing 3 entries</p>
+        <div class="fe-pagination-controls">
+          <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
+          <p class="page-info">Page 1 of 1</p>
+          <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+        </div>
+      </div>
+    </div><!-- /BLOCK 4 -->
+
+    <!-- ═══ BLOCK 5: EPS Surprise (full width) ══════════════════════ -->
+    <div>
+      <div class="ed-hdr">
+        <span class="ed-hdr-label">EPS</span>
+        <span class="ed-hdr-title">EPS Surprise History</span>
+        <span class="ed-hdr-sub">Historical vs. consensus estimates · 6 quarters</span>
+      </div>
+
+      <div class="eps-chart-container">
+        <!-- Alternating column backgrounds -->
+        <div class="eps-col" style="left:0;right:83.39%;background:#eeeff1;"></div>
+        <div class="eps-col" style="left:16.61%;right:66.79%;background:#f8f8fa;"></div>
+        <div class="eps-col" style="left:33.21%;right:50.18%;background:#eeeff1;"></div>
+        <div class="eps-col" style="left:49.82%;right:33.57%;background:#f8f8fa;"></div>
+        <div class="eps-col" style="left:66.43%;right:16.96%;background:#eeeff1;"></div>
+        <div class="eps-col" style="left:83.04%;right:0.36%;background:#f8f8fa;"></div>
+        <!-- Y-axis grid lines -->
+        <div class="eps-grid-line" style="top:21px;"></div>
+        <div class="eps-y-label" style="top:15px;">$1.30</div>
+        <div class="eps-grid-line" style="top:61px;"></div>
+        <div class="eps-y-label" style="top:55px;">$1.20</div>
+        <div class="eps-grid-line" style="top:101px;"></div>
+        <div class="eps-y-label" style="top:95px;">$1.10</div>
+        <div class="eps-grid-line" style="top:141px;"></div>
+        <div class="eps-y-label" style="top:135px;">$1.00</div>
+        <div class="eps-grid-line" style="top:181px;"></div>
+        <div class="eps-y-label" style="top:175px;">$0.90</div>
+        <div class="eps-grid-line" style="top:221px;"></div>
+        <div class="eps-y-label" style="top:215px;">$0.80</div>
+        <!-- Data dots — editorial assets -->
+        <div class="eps-dot" style="left:87px;top:195px;"><img alt="" src="assets/feb6ce9cbc6a543fb3e47b17f82b5dc2c90f20aa.svg" /></div>
+        <div class="eps-dot" style="left:273px;top:115px;"><img alt="" src="assets/feb6ce9cbc6a543fb3e47b17f82b5dc2c90f20aa.svg" /></div>
+        <div class="eps-dot" style="left:273px;top:95px;"><img alt="" src="assets/feea5d907835448864248fe5c6c06f77a438824f.svg" /></div>
+        <div class="eps-dot" style="left:459px;top:75px;"><img alt="" src="assets/feb6ce9cbc6a543fb3e47b17f82b5dc2c90f20aa.svg" /></div>
+        <div class="eps-dot" style="left:459px;top:95px;"><img alt="" src="assets/feea5d907835448864248fe5c6c06f77a438824f.svg" /></div>
+        <div class="eps-dot" style="left:645px;top:115px;"><img alt="" src="assets/feea5d907835448864248fe5c6c06f77a438824f.svg" /></div>
+        <div class="eps-dot" style="left:645px;top:95px;"><img alt="" src="assets/feea5d907835448864248fe5c6c06f77a438824f.svg" /></div>
+        <div class="eps-dot" style="left:831px;top:115px;"><img alt="" src="assets/763cd96ec2093ced3f432ca669ec868119bbb55c.svg" /></div>
+        <div class="eps-dot" style="left:1017px;top:55px;"><img alt="" src="assets/feea5d907835448864248fe5c6c06f77a438824f.svg" /></div>
+        <div class="eps-dot" style="left:1017px;top:35px;"><img alt="" src="assets/feea5d907835448864248fe5c6c06f77a438824f.svg" /></div>
+      </div>
+
+      <div class="eps-x-labels">
+        <div class="eps-x-label" style="left:93px;top:0;">
+          <span class="qtr">FQ1'25</span><span class="dt">Mar 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:279px;top:0;">
+          <span class="qtr">FQ2'25</span><span class="dt">Jun 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:465px;top:0;">
+          <span class="qtr">FQ3'25</span><span class="dt">Sep 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:651px;top:0;">
+          <span class="qtr">FQ4'25</span><span class="dt">Dec 2025</span>
+        </div>
+        <div class="eps-x-label" style="left:837px;top:0;">
+          <span class="qtr">FQ1'26</span><span class="dt">Mar 2026</span>
+        </div>
+        <div class="eps-x-label" style="left:1023px;top:0;">
+          <span class="qtr">FQ2'26</span><span class="dt">Jun 2026</span>
+        </div>
+      </div>
+
+      <div class="eps-divider"></div>
+
+      <div class="eps-legend">
+        <div class="eps-legend-item">
+          <div class="eps-legend-dot"><img alt="" src="assets/2f77cf83f6edc4369103223529d0bf35cf537032.svg" /></div>
+          <span class="eps-legend-label">Actual (Beat)</span>
+        </div>
+        <div class="eps-legend-item">
+          <div class="eps-legend-dot"><img alt="" src="assets/b47ede82bf85e791e63206d97ce6b36faea1a0b3.svg" /></div>
+          <span class="eps-legend-label">Actual (Miss)</span>
+        </div>
+        <div class="eps-legend-item">
+          <div class="eps-legend-dot"><img alt="" src="assets/f6ed9b9f57cb8a132cae859b9b2b834deb62e0c4.svg" /></div>
+          <span class="eps-legend-label">Estimates</span>
+        </div>
+      </div>
+    </div><!-- /BLOCK 5 -->
+
+    <!-- ═══ BLOCK 6: Valuation Multiples (full width) ═══════════════ -->
+    <div>
+      <div class="ed-hdr">
+        <span class="ed-hdr-label">Valuation</span>
+        <span class="ed-hdr-title">Valuation Multiples</span>
+        <span class="ed-hdr-sub">FIG vs. Sector Median · Forward-looking ratios · FY2026E</span>
+      </div>
+
+      <div class="vm-table-head">
+        <div class="vm-col-name">Multiple</div>
+        <div class="vm-col-val">NTM</div>
+        <div class="vm-col-val">FY1</div>
+        <div class="vm-col-val">FY2</div>
+        <div class="vm-col-val">FY3</div>
+      </div>
+      <div class="vm-table-body">
+        <div class="vm-row"><p class="vm-cell-name">P/E</p><p class="vm-cell-val">18.4x</p><p class="vm-cell-val">16.2x</p><p class="vm-cell-val">14.1x</p><p class="vm-cell-val dim">12.7x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">P/BV</p><p class="vm-cell-val">3.2x</p><p class="vm-cell-val">2.9x</p><p class="vm-cell-val">2.6x</p><p class="vm-cell-val dim">2.3x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">P/CFPS</p><p class="vm-cell-val">15.1x</p><p class="vm-cell-val">13.4x</p><p class="vm-cell-val">11.8x</p><p class="vm-cell-val dim">10.5x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">PEG</p><p class="vm-cell-val">1.4x</p><p class="vm-cell-val">1.2x</p><p class="vm-cell-val">1.1x</p><p class="vm-cell-val dim">1.0x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">TEV/EBIT</p><p class="vm-cell-val">20.1x</p><p class="vm-cell-val">17.8x</p><p class="vm-cell-val">15.4x</p><p class="vm-cell-val dim">13.6x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">TEV/EBITDA</p><p class="vm-cell-val">14.2x</p><p class="vm-cell-val">12.5x</p><p class="vm-cell-val">11.0x</p><p class="vm-cell-val dim">9.8x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">TEV/Revenue</p><p class="vm-cell-val">5.8x</p><p class="vm-cell-val">5.1x</p><p class="vm-cell-val">4.5x</p><p class="vm-cell-val dim">4.0x</p></div>
+        <div class="vm-row"><p class="vm-cell-name">Market Cap/Revenue</p><p class="vm-cell-val">5.5x</p><p class="vm-cell-val">4.9x</p><p class="vm-cell-val">4.3x</p><p class="vm-cell-val dim">3.8x</p></div>
+      </div>
+      <div class="vm-pagination">
+        <p class="entries">Showing 8 entries</p>
+        <div class="vm-pagination-controls">
+          <div class="pg-btn"><img alt="" src="assets/f0753c90c9de237f28b629f728b5596130b31627.svg" /></div>
+          <p class="page-info">Page 1 of 1</p>
+          <div class="pg-btn"><img alt="" src="assets/97995768574ea016447b734928ad0ced74680cb0.svg" /></div>
+        </div>
+      </div>
+    </div><!-- /BLOCK 6 -->
+
+    <!-- ═══ BLOCK 7: Financial Highlights (full width) ══════════════ -->
+    <div>
+      <div class="ed-hdr">
+        <span class="ed-hdr-label">Financials</span>
+        <span class="ed-hdr-title">Financial Highlights</span>
+        <span class="ed-hdr-sub">Key metrics · FY2024A · FY2025A · FY2026E</span>
+      </div>
+
+      <div class="fh-table">
+        <div class="fh-table-head">
+          <div class="fh-col-name">Metric</div>
+          <div class="fh-col-val">FY2024A</div>
+          <div class="fh-col-val">FY2025A</div>
+          <div class="fh-col-val">FY2026E</div>
+          <div class="fh-col-val">YoY Growth</div>
+        </div>
+        <div class="fh-row">
+          <p class="fh-cell-name">Revenue</p>
+          <p class="fh-cell-val">$2.3B</p>
+          <p class="fh-cell-val">$3.1B</p>
+          <p class="fh-cell-val">$4.2B</p>
+          <p class="fh-cell-val pos">+35.5%</p>
+        </div>
+        <div class="fh-row">
+          <p class="fh-cell-name">Gross Profit</p>
+          <p class="fh-cell-val">$1.9B</p>
+          <p class="fh-cell-val">$2.6B</p>
+          <p class="fh-cell-val">$3.5B</p>
+          <p class="fh-cell-val pos">+34.6%</p>
+        </div>
+        <div class="fh-row">
+          <p class="fh-cell-name">EBITDA</p>
+          <p class="fh-cell-val">$420M</p>
+          <p class="fh-cell-val">$680M</p>
+          <p class="fh-cell-val">$980M</p>
+          <p class="fh-cell-val pos">+44.1%</p>
+        </div>
+        <div class="fh-row">
+          <p class="fh-cell-name">Net Income</p>
+          <p class="fh-cell-val">$180M</p>
+          <p class="fh-cell-val">$310M</p>
+          <p class="fh-cell-val">$490M</p>
+          <p class="fh-cell-val pos">+58.1%</p>
+        </div>
+        <div class="fh-row">
+          <p class="fh-cell-name">EPS (Diluted)</p>
+          <p class="fh-cell-val">$0.36</p>
+          <p class="fh-cell-val">$0.61</p>
+          <p class="fh-cell-val">$0.96</p>
+          <p class="fh-cell-val pos">+57.4%</p>
+        </div>
+        <div class="fh-row">
+          <p class="fh-cell-name">Free Cash Flow</p>
+          <p class="fh-cell-val">$290M</p>
+          <p class="fh-cell-val">$510M</p>
+          <p class="fh-cell-val">$780M</p>
+          <p class="fh-cell-val pos">+52.9%</p>
+        </div>
+      </div>
+    </div><!-- /BLOCK 7 -->
+
+    <!-- ═══ BLOCK 8: Analyst FAQ (full width) ═══════════════════════ -->
+    <div>
+      <div class="ed-hdr">
+        <span class="ed-hdr-label">FAQ</span>
+        <span class="ed-hdr-title">Analyst FAQ</span>
+        <span class="ed-hdr-sub">Top questions from analyst reports and investor calls</span>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <p class="faq-question">How many analysts cover Figma Inc. (FIG)?</p>
+          <div class="faq-chevron"><img alt="" src="assets/10c1c4d0512e5448f0f21fbaef24ec578e8dd479.svg" /></div>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What is the consensus 12-month price target for FIG?</p>
+          <div class="faq-chevron"><img alt="" src="assets/10c1c4d0512e5448f0f21fbaef24ec578e8dd479.svg" /></div>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What is the most common analyst rating for Figma?</p>
+          <div class="faq-chevron"><img alt="" src="assets/10c1c4d0512e5448f0f21fbaef24ec578e8dd479.svg" /></div>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">When is Figma's next earnings call scheduled?</p>
+          <div class="faq-chevron"><img alt="" src="assets/10c1c4d0512e5448f0f21fbaef24ec578e8dd479.svg" /></div>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What factors are driving the bull case for FIG?</p>
+          <div class="faq-chevron"><img alt="" src="assets/10c1c4d0512e5448f0f21fbaef24ec578e8dd479.svg" /></div>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What are the main risks analysts flag for Figma stock?</p>
+          <div class="faq-chevron"><img alt="" src="assets/10c1c4d0512e5448f0f21fbaef24ec578e8dd479.svg" /></div>
+        </div>
+      </div>
+    </div><!-- /BLOCK 8 -->
+
+  </div><!-- /ed-main -->
+
+  <!-- ── RAIL COLUMN ──────────────────────────────────────────────────── -->
+  <div class="ed-rail">
+
+    <!-- NEWS CARD -->
+    <div class="card news-card">
+      <div class="news-header">
+        <p class="news-title">LATEST NEWS</p>
+        <p class="view-all">View all →</p>
+      </div>
+
+      <div class="news-featured">
+        <div class="news-thumb">
+          <img alt="Figma news" src="assets/0c382afff713c4892717c857278545f3b66a76ae.png" />
+        </div>
+        <div class="news-featured-content">
+          <p class="headline">Figma price target raised to $37 from $35 at Citi</p>
+          <p class="meta">The Fly · 4d ago</p>
+        </div>
+      </div>
+
+      <hr class="news-divider" />
+
+      <div class="news-list">
+        <div class="news-item">
+          <div class="text-block">
+            <p class="headline">Cboe data shows mixed options sentiment in Figma with shares down 15.54%</p>
+            <p class="meta">MarketWatch · 5d ago</p>
+          </div>
+          <hr class="news-divider" />
+        </div>
+        <div class="news-item">
+          <div class="text-block">
+            <p class="headline">Figma price target lowered to $33 from $38 at Morgan Stanley</p>
+            <p class="meta">Reuters · 5d ago</p>
+          </div>
+          <hr class="news-divider" />
+        </div>
+        <div class="news-item">
+          <div class="text-block">
+            <p class="headline">Figma reports strong Q2 with enterprise revenue up 40% YoY</p>
+            <p class="meta">Bloomberg · 1w ago</p>
+          </div>
+          <hr class="news-divider" />
+        </div>
+        <div class="news-item">
+          <div class="text-block">
+            <p class="headline">Adobe partnership expansion drives Figma platform growth</p>
+            <p class="meta">TechCrunch · 1w ago</p>
+          </div>
+          <hr class="news-divider" />
+        </div>
+        <div class="news-item">
+          <div class="text-block">
+            <p class="headline">Figma announces new AI features at Config 2026</p>
+            <p class="meta">The Verge · 2w ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY EVENTS CARD -->
+    <div class="card key-events-card">
+      <div class="ke-header">
+        <p class="ke-title">KEY EVENTS</p>
+        <p class="ke-subtitle">Upcoming dates</p>
+      </div>
+      <hr class="ke-header-divider" />
+
+      <div class="ke-events">
+        <div class="ke-row-wrap">
+          <div class="ke-row-content">
+            <div class="ke-date-block">
+              <p class="month">AUG</p>
+              <p class="day">14</p>
+            </div>
+            <div class="ke-details">
+              <p class="event-title">Q2 2026 Earnings Call</p>
+              <p class="event-desc">Quarterly earnings report and analyst conference call</p>
+            </div>
+            <div class="ke-tag"><p>Earnings</p></div>
+          </div>
+          <hr class="ke-row-divider" />
+        </div>
+
+        <div class="ke-row-wrap">
+          <div class="ke-row-content">
+            <div class="ke-date-block">
+              <p class="month">AUG</p>
+              <p class="day">22</p>
+            </div>
+            <div class="ke-details">
+              <p class="event-title">Ex-Dividend Date</p>
+              <p class="event-desc">$0.68 per share quarterly dividend</p>
+            </div>
+            <div class="ke-tag"><p>Dividend</p></div>
+          </div>
+          <hr class="ke-row-divider" />
+        </div>
+
+        <div class="ke-row-wrap">
+          <div class="ke-row-content">
+            <div class="ke-date-block">
+              <p class="month">SEP</p>
+              <p class="day">10</p>
+            </div>
+            <div class="ke-details">
+              <p class="event-title">Annual Developer Conference</p>
+              <p class="event-desc">New product announcements and platform updates</p>
+            </div>
+            <div class="ke-tag"><p>Product</p></div>
+          </div>
+          <hr class="ke-row-divider" />
+        </div>
+
+        <div class="ke-row-wrap">
+          <div class="ke-row-content">
+            <div class="ke-date-block">
+              <p class="month">OCT</p>
+              <p class="day">02</p>
+            </div>
+            <div class="ke-details">
+              <p class="event-title">Investor Day 2026</p>
+              <p class="event-desc">Management to present 3-year strategic roadmap</p>
+            </div>
+            <div class="ke-tag"><p>Investor</p></div>
+          </div>
+          <hr class="ke-row-divider" />
+        </div>
+
+        <div class="ke-row-wrap">
+          <div class="ke-row-content">
+            <div class="ke-date-block">
+              <p class="month">NOV</p>
+              <p class="day">06</p>
+            </div>
+            <div class="ke-details">
+              <p class="event-title">Q3 2026 Earnings Call</p>
+              <p class="event-desc">Quarterly earnings report and analyst conference call</p>
+            </div>
+            <div class="ke-tag"><p>Earnings</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY RISKS CARD -->
+    <div class="card kr-card">
+      <div class="kr-header">
+        <div class="kr-title-group">
+          <p class="kr-title">Key Risks</p>
+          <p class="kr-title-sub">Company-specific risk factors</p>
+        </div>
+        <p class="kr-view-all">View all →</p>
+      </div>
+      <hr class="kr-header-divider" />
+
+      <div class="kr-risk-list">
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#ef4444;">
+              <p class="kr-sev-label">HIGH</p>
+              <p class="kr-sev-value">8</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Regulatory scrutiny</p>
+              <p class="kr-risk-desc">Potential regulatory action could increase compliance costs and restrict pricing flexibility.</p>
+              <div class="kr-metadata">
+                <span class="source">Reuters</span><span class="sep">·</span><span class="date">Aug 8</span>
+              </div>
+            </div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#f59e0b;">
+              <p class="kr-sev-label">MED</p>
+              <p class="kr-sev-value">4</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Margin pressure from rising costs</p>
+              <p class="kr-risk-desc">Increasing competition and input cost inflation could pressure operating margins.</p>
+              <div class="kr-metadata">
+                <span class="source">Analyst research</span><span class="sep">·</span><span class="date">Aug 4</span>
+              </div>
+            </div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#3b82f6;">
+              <p class="kr-sev-label">LOW</p>
+              <p class="kr-sev-value">2</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Cloud segment deceleration</p>
+              <p class="kr-risk-desc">Enterprise spending pullback is slowing the highest-growth segment (35% of forward revenue).</p>
+              <div class="kr-metadata">
+                <span class="source">10-Q filing</span><span class="sep">·</span><span class="date">Jul 30</span>
+              </div>
+            </div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#ef4444;">
+              <p class="kr-sev-label">HIGH</p>
+              <p class="kr-sev-value">9</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Key management transition</p>
+              <p class="kr-risk-desc">CFO departure during active restructuring creates execution uncertainty around capital allocation.</p>
+              <div class="kr-metadata">
+                <span class="source">Press release</span><span class="sep">·</span><span class="date">Jul 25</span>
+              </div>
+            </div>
+          </div>
+          <hr class="kr-divider" />
+        </div>
+
+        <div class="kr-risk-item">
+          <div class="kr-item-content">
+            <div class="kr-severity" style="color:#f59e0b;">
+              <p class="kr-sev-label">MED</p>
+              <p class="kr-sev-value">5</p>
+            </div>
+            <div class="kr-details">
+              <p class="kr-risk-title">Privacy regulation ad revenue impact</p>
+              <p class="kr-risk-desc">New tracking restrictions could reduce ad targeting effectiveness — analysts estimate 3-5% revenue headwind.</p>
+              <div class="kr-metadata">
+                <span class="source">Morgan Stanley</span><span class="sep">·</span><span class="date">Jul 20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /ed-rail -->
+
+</div><!-- /ed-body -->
+
+</body>
+</html>
